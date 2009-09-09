@@ -1,0 +1,50 @@
+<!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
+<idea-plugin>
+    <name>Dto-Wrapper-Builder Generator</name>
+    <project-components>
+        <component>
+            <implementation-class>de.jigp.plugin.GeneratorComponent
+            </implementation-class>
+        </component>
+    </project-components>
+
+    <description>
+        <![CDATA[
+        This plugin generates builder, dtos or special wrappers for given classes. It is based on code of the GenerateBuilder plugin.
+      ]]>
+    </description>
+    <version>0.1</version>
+    <idea-version since-build="8000"/>
+    <actions>
+        <!--<action id="AllDtos" class="de.jigp.plugin.actions.dto.GenerateDtosMenuAction"-->
+        <!--text="Generate Dtos">-->
+        <!--<add-to-group group-id="CodeMenu" anchor="first"/>-->
+        <!--</action>-->
+        <!--<action id="AllWrapper"-->
+        <!--class="de.jigp.plugin.actions.wrapper.GenerateWrapperMenuAction"-->
+        <!--text="Generate Wrapper">-->
+        <!--<add-to-group group-id="CodeMenu" anchor="first"/>-->
+        <!--</action>-->
+        <group id="generator.group" text="generate ..." description="Group generators" popup="true">
+            <add-to-group group-id="GenerateGroup" relative-to-action="GenerateEquals" anchor="after"/>
+            <action id="generatorPlugin.GenerateWrapper"
+                    class="de.jigp.plugin.actions.contextmenu.wrapper.GenerateWrapperEditorAction"
+                    text="wrapper"
+                    description="Generates wrapper for selected interface">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift alt w"/>
+            </action>
+            <action id="generatorPlugin.GenerateDto"
+                    class="de.jigp.plugin.actions.contextmenu.dto.GenerateDtoEditorAction"
+                    text="dto"
+                    description="Generates Dto for selected interface">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift alt d"/>
+            </action>
+            <action id="generatorPlugin.GenerateBuilder"
+                    class="de.jigp.plugin.actions.contextmenu.builder.GenerateBuilderEditorAction"
+                    text="builder"
+                    description="Generates Builder for selected class">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift alt b"/>
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
