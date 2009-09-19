@@ -10,7 +10,6 @@ import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiType;
 import com.intellij.psi.search.searches.AnnotatedMembersSearch;
 import com.intellij.util.Query;
-//import de.hypoport.ef2.codegeneration.dto.DtoBaseType;
 import de.jigp.plugin.actions.generator.AbstractGenerator;
 import org.apache.commons.lang.StringUtils;
 
@@ -24,7 +23,7 @@ public class DtoGenerator extends AbstractGenerator {
     private String copyConstructorMethodText = "";
     private String complexCopyConstructorMethodText = "";
     private String staticDeepCopyFuntion = "";
-    private String annotationName = "de.hypoport.ef2.codegeneration.dto.DtoBaseType";//DtoBaseType.class.getName();
+    private String annotationName;
     private List<String> collectionClassNames;
 
 
@@ -43,7 +42,7 @@ public class DtoGenerator extends AbstractGenerator {
     }
 
     protected Collection<PsiField> filterFieldsToHandle(PsiField[] psiFields) {
-        return null;  
+        return null;
     }
 
     protected void afterHandlingHook() {
@@ -71,7 +70,7 @@ public class DtoGenerator extends AbstractGenerator {
     }
 
     protected void handleField(PsiField psiField) {
-        
+
     }
 
     protected void handleMethod(PsiMethod psiMethod) {

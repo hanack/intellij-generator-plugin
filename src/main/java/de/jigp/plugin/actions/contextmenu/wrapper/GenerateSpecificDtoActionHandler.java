@@ -16,7 +16,7 @@ class WrapperGeneratorComputable extends PsiInfrastructureHolder implements Comp
     }
 
     public PsiClass compute() {
-        String targetClassSuffix = new WrapperTargetClassChooser(dataContext).invoke();
+        String targetClassSuffix = new WrapperTargetClassChooser(dataContext).invoke("");
         if (targetClassSuffix != null) {
             return new WrapperGenerator(dataContext, selectedInterface, targetClassSuffix).build();
         } else {

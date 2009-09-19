@@ -8,6 +8,7 @@
     </content>
     <orderEntry type="jdk" jdkName="IDEA 9852" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="IntelliJ IDEA GridLayout" level="project" />
   </component>
 </module>
 

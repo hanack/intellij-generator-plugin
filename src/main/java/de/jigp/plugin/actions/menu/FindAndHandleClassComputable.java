@@ -16,7 +16,10 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
     private HandleAnnotatedClassAction menuAction;
     public DetermineTargetClassChooser targetClassChooser;
 
-    public FindAndHandleClassComputable(DataContext dataContext, HandleAnnotatedClassAction menuAction, String annotationName, DetermineTargetClassChooser targetClassChooser) {
+    public FindAndHandleClassComputable(DataContext dataContext,
+                                        HandleAnnotatedClassAction menuAction,
+                                        String annotationName,
+                                        DetermineTargetClassChooser targetClassChooser) {
         super(dataContext);
         this.menuAction = menuAction;
         this.annotationName = annotationName;
@@ -24,14 +27,6 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
     }
 
     public PsiClass compute() {
-
-        annotationName = Messages.showEditableChooseDialog("Enter suffix for generated classes.",
-                "Annotation",
-                Messages.getQuestionIcon(),
-                new String[]{"de.hypoport.ef2.codegeneration.dto.DtoBaseType"},
-                "de.hypoport.ef2.codegeneration.dto.DtoBaseType",
-                null);
-        
         if (isPreconditionViolated()) return null;
         handleClasses();
         return null;
@@ -40,9 +35,9 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
     private void handleClasses() {
         Collection<PsiMember> classNames = searchClassNamesToHandle();
         if (classNames != null || classNames.isEmpty()) {
-            String targetClassSuffix = targetClassChooser.invoke();
+            String text = "Generate elements for " + classNames.size() + " sources annotated with: " + annotationName+"\n";
+            String targetClassSuffix = targetClassChooser.invoke(text);
             for (PsiMember member : classNames) {
-
                 PsiClass psiClass = (PsiClass) member.getOriginalElement();
                 menuAction.handleClass(dataContext, psiClass, targetClassSuffix);
             }
@@ -64,7 +59,7 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
         PsiClass dtoBaseTypeAnnotation = psiFacade.findClass(annotationName, globalSearchScope);
         if (dtoBaseTypeAnnotation == null) {
 
-            Messages.showErrorDialog("Projects needs following annotation in classpath: " + annotationName, "Error missing annotation.");
+            Messages.showErrorDialog("Projects needs following annotation in classpath: " + annotationName+"\n Add the annotation to your projects classpath, or configure the plugin with the correct annotation name.", "Error missing annotation.");
             return true;
         }
         return false;

@@ -14,7 +14,7 @@ public abstract class DetermineTargetClassChooser extends PsiInfrastructureHolde
         this.defaultSuffixes = defaultSuffixes;
     }
 
-    public String invoke() {
+    public String invoke(String headlineText) {
         InputValidator validator = new InputValidator() {
 
             public boolean checkInput(String suffix) {
@@ -25,7 +25,7 @@ public abstract class DetermineTargetClassChooser extends PsiInfrastructureHolde
                 return Pattern.matches("\\w+?", suffix);
             }
         };
-        String targetClassSuffix = Messages.showEditableChooseDialog("Enter suffix for generated classes.",
+        String targetClassSuffix = Messages.showEditableChooseDialog(headlineText+"\nEnter suffix for generated classes.",
                 "Suffix",
                 Messages.getQuestionIcon(),
                 defaultSuffixes,

@@ -1,9 +1,11 @@
-package de.jigp.plugin.actions.builder;
+package de.jigp.plugin.actions.builder.generator;
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiMethod;
+import de.jigp.plugin.GeneratorPluginContext;
+import de.jigp.plugin.actions.builder.PsiFieldFilterDialog;
 import de.jigp.plugin.actions.generator.AbstractGenerator;
 import de.jigp.plugin.actions.generator.CancelActionException;
 
@@ -15,7 +17,6 @@ import java.util.List;
 public class BuilderGenerator extends AbstractGenerator {
     private boolean isWithAssertions;
     private List<String> attributeAssertionTexts = new ArrayList<String>();
-    private static final String FULL_QUALIFIED_ASSERT_METHOD = "org.springframework.util.Assert.notNull";
 
 
     public BuilderGenerator(DataContext dataContext, PsiClass targetClassSuffix, String annotatedClass) {
@@ -47,7 +48,7 @@ public class BuilderGenerator extends AbstractGenerator {
                 + "}";
         this.addOrReplaceMethod(setMethodText);
 
-        String assertionText = FULL_QUALIFIED_ASSERT_METHOD + "(instance." + psiField.getName() + ", \"Attribute: " + psiField.getName() + "\");";
+        String assertionText = GeneratorPluginContext.getConfiguration().builderAssertionName + "(instance." + psiField.getName() + ", \"Attribute: " + psiField.getName() + "\");";
         attributeAssertionTexts.add(assertionText);
 
 

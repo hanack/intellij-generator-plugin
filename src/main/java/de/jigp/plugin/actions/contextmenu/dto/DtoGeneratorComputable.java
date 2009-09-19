@@ -16,7 +16,7 @@ class DtoGeneratorComputable extends PsiInfrastructureHolder implements Computab
     }
 
     public PsiClass compute() {
-        String targetClassSuffix = new DtoTargetClassChooser(dataContext).invoke();
+        String targetClassSuffix = new DtoTargetClassChooser(dataContext).invoke("");
         if (targetClassSuffix != null) {
             return new DtoGenerator(dataContext, selectedInterface, targetClassSuffix).build();
         } else {
