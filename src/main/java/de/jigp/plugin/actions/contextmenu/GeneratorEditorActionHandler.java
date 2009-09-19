@@ -26,10 +26,10 @@ public abstract class GeneratorEditorActionHandler extends EditorActionHandler {
 
         Computable<PsiClass> computable = createGenerator(dataContext, selectedInterface);
         PsiClass builderClass = com.intellij.openapi.application.ApplicationManager.getApplication().runWriteAction(computable);
-
         if (builderClass != null) {
             jumpToGeneratoedClass(builderClass);
         }
+
     }
 
     protected abstract Computable<PsiClass> createGenerator(DataContext dataContext, PsiClass selectedInterface);

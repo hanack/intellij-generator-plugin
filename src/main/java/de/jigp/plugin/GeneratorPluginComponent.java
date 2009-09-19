@@ -74,7 +74,7 @@ public class GeneratorPluginComponent implements ProjectComponent, Configurable,
     }
 
     public String getHelpTopic() {
-        return null;
+        return "This Plugin generates 3 types of classes for a given Java Interface or Java Class.";
     }
 
     public Icon getIcon() {

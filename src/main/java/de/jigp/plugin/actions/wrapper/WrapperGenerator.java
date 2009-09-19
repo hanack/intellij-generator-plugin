@@ -18,7 +18,7 @@ public class WrapperGenerator extends AbstractGenerator {
 
     protected void afterHandlingHook() {
         targetCopyConstructorText += "}";
-        constructorTexts.add(targetCopyConstructorText);
+        addOrReplaceMethod(targetCopyConstructorText);
 
     }
 

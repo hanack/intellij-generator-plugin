@@ -48,8 +48,8 @@ public class DtoGenerator extends AbstractGenerator {
     protected void afterHandlingHook() {
         copyConstructorMethodText += "}";
         complexCopyConstructorMethodText += "}";
-
-        constructorTexts.add(copyConstructorMethodText);
+        addOrReplaceMethod(copyConstructorMethodText);
+        addDtoDefaultConstructor();
 //        constructorTexts.add(complexCopyConstructorMethodText);
 //        super.addOrReplaceMethod(staticDeepCopyFuntion);
     }
@@ -66,7 +66,7 @@ public class DtoGenerator extends AbstractGenerator {
                 " original, java.util.HashMap < Object, Object > allDtos){" +
                 " return new " + targetClassName() + "(original,allDtos);}";
 
-        addDtoDefaultConstructor();
+//        addDtoDefaultConstructor();
     }
 
     protected void handleField(PsiField psiField) {
@@ -77,7 +77,6 @@ public class DtoGenerator extends AbstractGenerator {
         com.intellij.psi.PsiType fieldType = psiMethod.getReturnType();
         String fieldName = determineFieldNameFromGetterMethod(psiMethod);
         String fieldTypeName = fieldType.getCanonicalText();
-//        String fieldTypeName = fieldType.getPresentableText();
 
         createField(fieldName, fieldTypeName);
         createGetter(fieldName, fieldTypeName);
@@ -131,7 +130,7 @@ public class DtoGenerator extends AbstractGenerator {
 
     private void addDtoDefaultConstructor() {
         String defaultConstructorMethodText = "public " + targetClassName() + "(){}";
-        constructorTexts.add(defaultConstructorMethodText);
+        addOrReplaceMethod(defaultConstructorMethodText);
     }
 
     private void handleCollection(PsiClass psiFieldClass, PsiClassType psiClassType) {
@@ -177,8 +176,6 @@ public class DtoGenerator extends AbstractGenerator {
     }
 
     private boolean isCollection(PsiClass psiFieldClass) {
-
-
         for (String collectionClassName : collectionClassNames) {
             PsiClass collectionClass = psiFacade.findClass(collectionClassName, globalSearchScope);
             if (psiFieldClass != null && (psiFieldClass.isInheritor(collectionClass, true) || psiFieldClass.equals(collectionClass))) {

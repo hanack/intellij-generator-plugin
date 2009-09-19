@@ -2,6 +2,7 @@ package de.jigp.plugin.actions.builder;
 
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.psi.PsiField;
+import de.jigp.plugin.GeneratorPluginContext;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -50,7 +51,7 @@ public class PsiFieldFilterDialog extends DialogWrapper {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(pane);
 
-        checkboxWithAssertions = new JCheckBox("Create assertions for selected attributes in builder", false);
+        checkboxWithAssertions = new JCheckBox("Create assertions for selected attributes in builder.\nThe configured assertion Method is " + GeneratorPluginContext.getConfiguration().builderAssertionName, false);
         panel.add(checkboxWithAssertions);
         return panel;
     }

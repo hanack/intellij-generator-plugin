@@ -30,7 +30,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
     private PsiReferenceList targetImplementsList;
     private PsiReferenceList targetExtendsList;
     protected Set<String> newMethods = new HashSet<String>();
-    protected HashSet<String> constructorTexts = new HashSet<String>();
     private boolean shouldTargetClassInheritingSource;
     private boolean isTargetInnerClass;
 
@@ -50,7 +49,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
             addTargetClassPhysically();
             return targetClass;
         } catch (CancelActionException e) {
-            e.printStackTrace();
             return null;
         }
     }
@@ -80,7 +78,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         addClassInheritance();
         addNewFields();
         addNewMethods();
-        addNewConstructors();
         reformatCode();
         return targetClass;
     }
@@ -139,12 +136,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         }
     }
 
-    private void addNewConstructors() {
-        for (String constructorText : constructorTexts) {
-            addOrReplaceMethod(constructorText);
-        }
-    }
-
     private void handleMethods() {
         PsiMethod[] psiMethods = sourceClassForGeneration.getAllMethods();
         Collection<PsiMethod> filterdMethods = filterMethodsToHandle(psiMethods);
@@ -182,7 +173,7 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
     protected abstract Collection<PsiField> filterFieldsToHandle(PsiField[] psiFields) throws CancelActionException;
 
     protected void appendReturnTypeToImportList(PsiMethod psiMethod) {
-        PsiClass importClass = psiFacade.findClass(psiMethod.getReturnType().getPresentableText(), globalSearchScope);
+        PsiClass importClass = psiFacade.findClass(psiMethod.getReturnType().getCanonicalText(), globalSearchScope);
         appendClassToImportList(importClass);
     }
 
@@ -202,11 +193,9 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
 
     protected PsiMethod addOrReplaceMethod(PsiClass target, String methodText) {
         PsiMethod newMethod = psiElementFactory.createMethodFromText(methodText, null);
-        PsiMethod[] existingMethods = target.findMethodsByName(newMethod.getName(), false);
-        // TODO Hack, because findBySignature doesent work for all Methods ????
-//        PsiMethod existingMethod = target.findMethodBySignature(newMethod, false);
-        if (existingMethods != null && existingMethods.length > 0) {
-            existingMethods[0].replace(newMethod);
+        PsiMethod existingMethod = target.findMethodBySignature(newMethod, false);
+        if (existingMethod != null) {
+            existingMethod.replace(newMethod);
         } else {
             target.add(newMethod);
         }
@@ -262,10 +251,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         targetImportList = targetJavaFile.getImportList();
         targetImplementsList = targetClass.getImplementsList();
         targetExtendsList = targetClass.getExtendsList();
-    }
-
-    protected void addConstructorText(String constructorText) {
-        constructorTexts.add(constructorText);
     }
 
     public String qualifiedTargetClassName() {

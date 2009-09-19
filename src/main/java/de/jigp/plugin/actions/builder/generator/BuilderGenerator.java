@@ -30,10 +30,10 @@ public class BuilderGenerator extends AbstractGenerator {
 
     private void createBuilderConstructor() {
         String sourceQualifiedName = sourceClassForGeneration.getQualifiedName();
-        String builderConstructorMethodText = "private " + targetClassName() + "(){"
+        String builderConstructorMethodText = "public " + targetClassName() + "(){"
                 + "instance = new " + sourceQualifiedName + "();"
                 + "}";
-        this.addConstructorText(builderConstructorMethodText);
+        addOrReplaceMethod(builderConstructorMethodText);
     }
 
     @Override
@@ -42,7 +42,8 @@ public class BuilderGenerator extends AbstractGenerator {
 
     @Override
     protected void handleField(PsiField psiField) {
-        String setMethodText = "public " + targetClassName() + " " + psiField.getName() + "(" + psiField.getTypeElement().getType().getPresentableText() + " " + psiField.getName() + "){"
+
+        String setMethodText = "public " + sourceClassForGeneration.getQualifiedName() + "." + targetClassName() + " " + psiField.getName() + "(" + psiField.getTypeElement().getType().getCanonicalText() + " " + psiField.getName() + "){"
                 + "instance." + psiField.getName() + "=" + psiField.getName() + ";"
                 + "return this;"
                 + "}";
@@ -68,12 +69,6 @@ public class BuilderGenerator extends AbstractGenerator {
                         + "}";
 
         this.addOrReplaceMethod(buildMethodText);
-
-        String builderFactoryMethodText = "public static " + targetClassName() + " new" + targetClassName() + "(){"
-                + "return new " + targetClassName() + "();"
-                + "}";
-        this.addOrReplaceMethod(super.sourceClassForGeneration, builderFactoryMethodText);
-
     }
 
     @Override

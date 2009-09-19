@@ -35,10 +35,11 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
     private void handleClasses() {
         Collection<PsiMember> classNames = searchClassNamesToHandle();
         if (classNames != null || classNames.isEmpty()) {
-            String text = "Generate elements for " + classNames.size() + " sources annotated with: " + annotationName+"\n";
+            String text = "Generate elements for " + classNames.size() + " sources annotated with: " + annotationName + "\n";
             String targetClassSuffix = targetClassChooser.invoke(text);
             for (PsiMember member : classNames) {
                 PsiClass psiClass = (PsiClass) member.getOriginalElement();
+                //TODO add progress bar
                 menuAction.handleClass(dataContext, psiClass, targetClassSuffix);
             }
             Messages.showInfoMessage("Amount of generated or modified Elements : " + classNames.size(), "Success");
@@ -58,8 +59,7 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
     private boolean isPreconditionViolated() {
         PsiClass dtoBaseTypeAnnotation = psiFacade.findClass(annotationName, globalSearchScope);
         if (dtoBaseTypeAnnotation == null) {
-
-            Messages.showErrorDialog("Projects needs following annotation in classpath: " + annotationName+"\n Add the annotation to your projects classpath, or configure the plugin with the correct annotation name.", "Error missing annotation.");
+            Messages.showErrorDialog("Projects needs following annotation in classpath: " + annotationName + ".\n Add the annotation to your projects classpath, or configure the plugin with the correct annotation name.", "Error missing annotation.");
             return true;
         }
         return false;
