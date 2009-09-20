@@ -1,15 +1,9 @@
 package de.jigp.plugin.actions.dto;
 
 import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.psi.GenericsUtil;
 import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiClassType;
 import com.intellij.psi.PsiField;
-import com.intellij.psi.PsiMember;
 import com.intellij.psi.PsiMethod;
-import com.intellij.psi.PsiType;
-import com.intellij.psi.search.searches.AnnotatedMembersSearch;
-import com.intellij.util.Query;
 import de.jigp.plugin.actions.generator.AbstractGenerator;
 import org.apache.commons.lang.StringUtils;
 
@@ -21,9 +15,6 @@ public class DtoGenerator extends AbstractGenerator {
 
 
     private String copyConstructorMethodText = "";
-    private String complexCopyConstructorMethodText = "";
-    private String staticDeepCopyFuntion = "";
-    private String annotationName;
     private List<String> collectionClassNames;
 
 
@@ -47,26 +38,14 @@ public class DtoGenerator extends AbstractGenerator {
 
     protected void afterHandlingHook() {
         copyConstructorMethodText += "}";
-        complexCopyConstructorMethodText += "}";
         addOrReplaceMethod(copyConstructorMethodText);
         addDtoDefaultConstructor();
-//        constructorTexts.add(complexCopyConstructorMethodText);
-//        super.addOrReplaceMethod(staticDeepCopyFuntion);
     }
 
     protected void beforeHandlingHook() {
 
         String sourceQualifiedName = sourceClassForGeneration.getQualifiedName();
         copyConstructorMethodText += "public " + targetClassName() + "(" + sourceQualifiedName + " original){";
-
-        complexCopyConstructorMethodText += "private " + targetClassName() + "(" +
-                sourceQualifiedName + " original, java.util.HashMap < Object, Object > allDtos){";
-
-        staticDeepCopyFuntion += "public static " + sourceQualifiedName + " createDeepCopy(" + sourceQualifiedName +
-                " original, java.util.HashMap < Object, Object > allDtos){" +
-                " return new " + targetClassName() + "(original,allDtos);}";
-
-//        addDtoDefaultConstructor();
     }
 
     protected void handleField(PsiField psiField) {
@@ -81,7 +60,7 @@ public class DtoGenerator extends AbstractGenerator {
         createField(fieldName, fieldTypeName);
         createGetter(fieldName, fieldTypeName);
         createSetter(fieldName, fieldTypeName);
-        addConsturctorTexts(fieldType, fieldName);
+        addConsturctorTexts(fieldName);
         addReturnTypeToImportList(psiMethod);
     }
 
@@ -112,19 +91,8 @@ public class DtoGenerator extends AbstractGenerator {
         addReturnTypeToImportList(getterMethod);
     }
 
-    private void addConsturctorTexts(PsiType fieldType, String fieldName) {
+    private void addConsturctorTexts(String fieldName) {
         addConstructorTextForType(fieldName);
-//        if (fieldType instanceof PsiClassType) {
-//
-//            PsiClassType classType = (PsiClassType) fieldType;
-//            PsiClass psiFieldClass = classType.resolve();
-//            if (isCollection(psiFieldClass)) {
-//                handleCollection(psiFieldClass, classType);
-//
-//            } else {
-//                handleType(psiFieldClass, fieldName);
-//            }
-//        }
     }
 
 
@@ -133,56 +101,9 @@ public class DtoGenerator extends AbstractGenerator {
         addOrReplaceMethod(defaultConstructorMethodText);
     }
 
-    private void handleCollection(PsiClass psiFieldClass, PsiClassType psiClassType) {
-        complexCopyConstructorMethodText += psiClassType + "   ";
-        complexCopyConstructorMethodText += GenericsUtil.getVariableTypeByExpressionType(psiClassType) + "    ";
-        complexCopyConstructorMethodText += psiClassType.getDeepComponentType() + "    ";
-
-
-    }
-
-    private void handleType(PsiClass psiFieldClass, String fieldName) {
-        String getOriginalObject =
-                "original.get" + StringUtils.capitalize(fieldName) + "()";
-        String thisField = "this." + fieldName;
-
-        Query<PsiMember> query = AnnotatedMembersSearch.search(psiFacade.findClass(annotationName, globalSearchScope));
-        Collection<PsiMember> memberCollection = query.findAll();
-
-        boolean isDeepCopyCall = false;
-        String fieldTypeNamePresentable = psiFieldClass.getQualifiedName();
-        if (psiFieldClass != null && memberCollection.contains(psiFieldClass)) {
-            fieldTypeNamePresentable = createTargetClassName(psiFieldClass.getQualifiedName());
-            isDeepCopyCall = true;
-        }
-        if (isDeepCopyCall) {
-            complexCopyConstructorMethodText += "this(original);" +
-                    "allDtos.put(original, this);" +
-                    "if(allDtos.containsKey(" + getOriginalObject + ")){" +
-                    "this." + fieldName + "= (" + fieldTypeNamePresentable + ")allDtos.get(" + getOriginalObject + ");" +
-                    "} else {" + "this." + fieldName + "= " + fieldTypeNamePresentable + ".createDeepCopy(original.get"
-                    + StringUtils.capitalize(fieldName) + "(),allDtos);" +
-
-                    "allDtos.put(" + getOriginalObject + "," + thisField + ");}";
-        } else {
-            copyConstructorMethodText += "this." + fieldName + "=original.get" + StringUtils.capitalize(fieldName) + "();";
-        }
-
-    }
-
     private void addConstructorTextForType(String fieldName) {
         copyConstructorMethodText += "this." + fieldName + "=original.get" + StringUtils.capitalize(fieldName) + "();";
 
-    }
-
-    private boolean isCollection(PsiClass psiFieldClass) {
-        for (String collectionClassName : collectionClassNames) {
-            PsiClass collectionClass = psiFacade.findClass(collectionClassName, globalSearchScope);
-            if (psiFieldClass != null && (psiFieldClass.isInheritor(collectionClass, true) || psiFieldClass.equals(collectionClass))) {
-                return true;
-            }
-        }
-        return false;
     }
 }
 

@@ -19,7 +19,6 @@ public class WrapperGenerator extends AbstractGenerator {
     protected void afterHandlingHook() {
         targetCopyConstructorText += "}";
         addOrReplaceMethod(targetCopyConstructorText);
-
     }
 
     protected void beforeHandlingHook() {
@@ -49,7 +48,7 @@ public class WrapperGenerator extends AbstractGenerator {
         String getterMethodText = "public " + fieldTypeName + " " + getterCallText +
                 "{ if (modifiedAttributes.containsKey(\"" + fieldName + "\")){ return (" + fieldTypeName + ") modifiedAttributes.get(\"" + fieldName + "\");" +
                 "}else { return delegate." + getterCallText + ";}}";
-        newMethods.add(getterMethodText);
+        addOrReplaceMethod(getterMethodText);
     }
 
     protected void createSetterMethod(PsiMethod psiMethod) {
@@ -60,7 +59,7 @@ public class WrapperGenerator extends AbstractGenerator {
 
         String setMethodText = "public void " + setterName + "(" + fieldTypeName + " " + fieldName + ")" +
                 "{ modifiedAttributes.put(\"" + fieldName + "\"," + fieldName + ");}";
-        newMethods.add(setMethodText);
+        addOrReplaceMethod(setMethodText);
 
     }
 

@@ -16,41 +16,42 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 public abstract class AbstractGenerator extends PsiInfrastructureHolder {
-    protected String targetClassSuffix;
-    protected PsiClass sourceClassForGeneration;
+    protected final String targetClassSuffix;
+    protected final PsiClass sourceClassForGeneration;
+
     private PsiImportList targetImportList;
     private PsiClass targetClass;
-
     private PsiReferenceList targetImplementsList;
     private PsiReferenceList targetExtendsList;
-    protected Set<String> newMethods = new HashSet<String>();
     private boolean shouldTargetClassInheritingSource;
     private boolean isTargetInnerClass;
 
 
-    public AbstractGenerator(DataContext dataContext, String targetClassSuffix, PsiClass annotatedClass, boolean isTargetClassImplementingSource, boolean isTargetInnerClass) {
+    public AbstractGenerator(DataContext dataContext, String targetClassSuffix, PsiClass sourceClass, boolean isTargetClassImplementingSource, boolean isTargetInnerClass) {
         super(dataContext);
         this.targetClassSuffix = targetClassSuffix;
-        sourceClassForGeneration = annotatedClass;
+        this.sourceClassForGeneration = sourceClass;
         this.shouldTargetClassInheritingSource = isTargetClassImplementingSource;
         this.isTargetInnerClass = isTargetInnerClass;
     }
 
     public PsiClass build() {
         try {
-            initOrCreateTargetClass();
-            modifyTargetClass();
-            addTargetClassPhysically();
-            return targetClass;
+            return generate();
         } catch (CancelActionException e) {
             return null;
         }
+    }
+
+    private PsiClass generate() throws CancelActionException {
+        initOrCreateTargetClass();
+        modifyTargetClass();
+        addTargetClassPhysically();
+        return targetClass;
     }
 
     private void initOrCreateTargetClass() {
@@ -62,14 +63,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         initTargetClassData();
     }
 
-    private void createEmptyInnerTargetClass() {
-        targetClass = sourceClassForGeneration.findInnerClassByName(this.targetClassName(), false);
-        if (targetClass == null) {
-            targetClass = psiElementFactory.createClass(targetClassName());
-            targetClass.getModifierList().setModifierProperty("static", true);
-        }
-    }
-
     private PsiClass modifyTargetClass() throws CancelActionException {
         beforeHandlingHook();
         handleMethods();
@@ -77,7 +70,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         afterHandlingHook();
         addClassInheritance();
         addNewFields();
-        addNewMethods();
         reformatCode();
         return targetClass;
     }
@@ -93,15 +85,13 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         }
     }
 
-    protected abstract void beforeHandlingHook();
-
-    protected abstract void handleMethod(PsiMethod psiMethod);
-
-    protected abstract void handleField(PsiField psiField);
-
-    protected abstract void afterHandlingHook();
-
-    protected abstract void addNewFields();
+    private void createEmptyInnerTargetClass() {
+        targetClass = sourceClassForGeneration.findInnerClassByName(this.targetClassName(), false);
+        if (targetClass == null) {
+            targetClass = psiElementFactory.createClass(targetClassName());
+            targetClass.getModifierList().setModifierProperty("static", true);
+        }
+    }
 
     private void addClassInheritance() {
         if (shouldTargetClassInheritingSource) {
@@ -113,12 +103,12 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         }
     }
 
-
     private void reformatCode() {
         if (codeStyleManager != null) {
             codeStyleManager.reformat(targetClass);
         }
     }
+
 
     private void addImplementsSourceInterface(PsiReferenceList targetList) {
         PsiJavaCodeReferenceElement newImportListType = psiElementFactory.createReferenceElementByType(psiElementFactory.createType(sourceClassForGeneration));
@@ -168,10 +158,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         }
     }
 
-    protected abstract Collection<PsiMethod> filterMethodsToHandle(PsiMethod[] psiMethods);
-
-    protected abstract Collection<PsiField> filterFieldsToHandle(PsiField[] psiFields) throws CancelActionException;
-
     protected void appendReturnTypeToImportList(PsiMethod psiMethod) {
         PsiClass importClass = psiFacade.findClass(psiMethod.getReturnType().getCanonicalText(), globalSearchScope);
         appendClassToImportList(importClass);
@@ -179,12 +165,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
 
     protected String determineFieldNameFromGetterMethod(PsiMethod psiMethod) {
         return StringUtils.lowerCase(psiMethod.getName().substring(3, 4)) + psiMethod.getName().substring(4);
-    }
-
-    private void addNewMethods() {
-        for (String methodText : newMethods) {
-            addOrReplaceMethod(methodText);
-        }
     }
 
     protected PsiMethod addOrReplaceMethod(String methodText) {
@@ -237,7 +217,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         }
     }
 
-
     private void createEmptyTargetClass() {
         targetClass = psiFacade.findClass(qualifiedTargetClassName(), globalSearchScope);
         if (targetClass == null) {
@@ -253,6 +232,7 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         targetExtendsList = targetClass.getExtendsList();
     }
 
+
     public String qualifiedTargetClassName() {
         return sourceClassForGeneration.getQualifiedName() + targetClassSuffix;
     }
@@ -264,4 +244,18 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
     public String createTargetClassName(String name) {
         return name + targetClassSuffix;
     }
+
+    protected abstract Collection<PsiMethod> filterMethodsToHandle(PsiMethod[] psiMethods);
+
+    protected abstract Collection<PsiField> filterFieldsToHandle(PsiField[] psiFields) throws CancelActionException;
+
+    protected abstract void beforeHandlingHook();
+
+    protected abstract void handleMethod(PsiMethod psiMethod);
+
+    protected abstract void handleField(PsiField psiField);
+
+    protected abstract void afterHandlingHook();
+
+    protected abstract void addNewFields();
 }
