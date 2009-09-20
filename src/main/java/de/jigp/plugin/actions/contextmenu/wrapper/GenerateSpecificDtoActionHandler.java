@@ -3,9 +3,9 @@ package de.jigp.plugin.actions.contextmenu.wrapper;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.util.Computable;
 import com.intellij.psi.PsiClass;
+import de.jigp.plugin.GeneratorPluginContext;
 import de.jigp.plugin.actions.menu.PsiInfrastructureHolder;
 import de.jigp.plugin.actions.wrapper.WrapperGenerator;
-import de.jigp.plugin.actions.wrapper.WrapperTargetClassChooser;
 
 class WrapperGeneratorComputable extends PsiInfrastructureHolder implements Computable<PsiClass> {
     private PsiClass selectedInterface;
@@ -16,7 +16,7 @@ class WrapperGeneratorComputable extends PsiInfrastructureHolder implements Comp
     }
 
     public PsiClass compute() {
-        String targetClassSuffix = new WrapperTargetClassChooser(dataContext).invoke("");
+        String targetClassSuffix = GeneratorPluginContext.getConfiguration().wrapperSuffix;
         if (targetClassSuffix != null) {
             return new WrapperGenerator(dataContext, selectedInterface, targetClassSuffix).build();
         } else {

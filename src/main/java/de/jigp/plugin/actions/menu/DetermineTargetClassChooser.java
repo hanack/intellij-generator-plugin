@@ -34,5 +34,7 @@ public abstract class DetermineTargetClassChooser extends PsiInfrastructureHolde
         return targetClassSuffix;
     }
 
+    public abstract String getDefaultTargetClassSuffix();
+
 
 }

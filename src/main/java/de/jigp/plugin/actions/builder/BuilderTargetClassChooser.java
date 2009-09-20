@@ -10,4 +10,7 @@ public class BuilderTargetClassChooser extends DetermineTargetClassChooser {
     }
 
 
+    public String getDefaultTargetClassSuffix() {
+        return "Builder";
+    }
 }

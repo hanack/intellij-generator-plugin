@@ -14,6 +14,9 @@ public class PluginConfigurationPanel extends JComponent {
     private JTextField wrapperAnnotationName;
     private JTextField builderAnnotationName;
     private JTextField builderAssertionName;
+    private JTextField dtoSuffix;
+    private JTextField wrapperSuffix;
+    private Checkbox supressSuffix;
 
     public PluginConfigurationPanel() {
         initComponents();
@@ -23,8 +26,11 @@ public class PluginConfigurationPanel extends JComponent {
         Configuration configuration = new GeneratorPluginComponent.Configuration();
         configuration.builderAnnotation = builderAnnotationName.getText();
         configuration.dtoAnnotation = dtoAnnotationName.getText();
+        configuration.dtoSuffix = dtoSuffix.getText();
         configuration.wrapperAnnotation = wrapperAnnotationName.getText();
+        configuration.wrapperSuffix = wrapperSuffix.getText();
         configuration.builderAssertionName = builderAssertionName.getText();
+        configuration.supressSufix = supressSuffix.getState();
 
         return configuration;
     }
@@ -32,8 +38,12 @@ public class PluginConfigurationPanel extends JComponent {
 
     public void setConfiguration(Configuration configuration) {
         builderAnnotationName.setText(configuration.builderAnnotation);
+        builderAssertionName.setText(configuration.builderAssertionName);
         wrapperAnnotationName.setText(configuration.wrapperAnnotation);
+        wrapperSuffix.setText(configuration.wrapperSuffix);
         dtoAnnotationName.setText(configuration.dtoAnnotation);
+        dtoSuffix.setText(configuration.dtoSuffix);
+        supressSuffix.setState(configuration.supressSufix);
 
     }
 
@@ -42,73 +52,79 @@ public class PluginConfigurationPanel extends JComponent {
     }
 
     private void initComponents() {
+        int amountRows = 7;
+        int amountColumns = 2;
+        initializePanel(amountRows, amountColumns);
+
+        int row = 0;
+        addLabelInFirstColumn(row, "Full qualified annotation to identify base for DTO classes: ");
+        dtoAnnotationName = createTextFieldInSecondColumn(row);
+
+        row++;
+        addLabelInFirstColumn(row, "Suffix for DTO generation:");
+        dtoSuffix = createTextFieldInSecondColumn(row);
+
+        row++;
+        addLabelInFirstColumn(row, "Full qualified annotation to identify base for Wrapper classes:");
+        wrapperAnnotationName = createTextFieldInSecondColumn(row);
+
+        row++;
+        addLabelInFirstColumn(row, "Suffix for Wrapper generation:");
+        wrapperSuffix = createTextFieldInSecondColumn(row);
+
+
+        row++;
+        addLabelInFirstColumn(row, "Full qualified annotation to identify base for Builder classes:");
+        builderAnnotationName = createTextFieldInSecondColumn(row);
+
+        row++;
+        addLabelInFirstColumn(row, "Builder: full qualified name of static assertion method:");
+        builderAssertionName = createTextFieldInSecondColumn(row);
+
+        row++;
+        addLabelInSecondColumn(row, "Supress suffix dialog");
+        supressSuffix = new Checkbox();
+        addElementInFirstColumn(row, supressSuffix);
+    }
+
+    private void initializePanel(int amountRows, int amountColumns) {
+        //TODO beautify current ugly layout
         jPanel = new JPanel();
-        JLabel labelDto = new JLabel();
-        JLabel labelWrapper = new JLabel();
-        JLabel labelBuilder = new JLabel();
-        JLabel labelAssertionMethod = new JLabel();
-        dtoAnnotationName = new JTextField();
-        wrapperAnnotationName = new JTextField();
-        builderAnnotationName = new JTextField();
-        builderAssertionName = new JTextField();
+        jPanel.setLayout(new GridLayoutManager(amountRows, amountColumns, new Insets(0, 0, 0, 0), -1, -1));
+    }
 
-        {
+    private void addLabelInSecondColumn(int labelRow, String labelText) {
+        JLabel label = new JLabel();
+        label.setText(labelText);
+        jPanel.add(label, new GridConstraints(labelRow, 1, 1, 1,
+                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_FIXED,
+                GridConstraints.SIZEPOLICY_FIXED,
+                null, null, null));
+    }
 
-            //TODO beautify current ugly layout
-            jPanel.setLayout(new GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1));
+    private void addLabelInFirstColumn(int labelRow, String labelText) {
+        JLabel label = new JLabel();
+        label.setText(labelText);
+        addElementInFirstColumn(labelRow, label);
+    }
 
-            labelDto.setText("Full qualified annotation to identify base for DTO classes: ");
-            jPanel.add(labelDto, new GridConstraints(0, 0, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
+    private void addElementInFirstColumn(int labelRow, Component component) {
+        jPanel.add(component, new GridConstraints(labelRow, 0, 1, 1,
+                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_FIXED,
+                GridConstraints.SIZEPOLICY_FIXED,
+                null, null, null));
+    }
 
-            labelWrapper.setText("Full qualified annotation to identify base for Wrapper classes:");
-            jPanel.add(labelWrapper, new GridConstraints(1, 0, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
-
-            labelBuilder.setText("Full qualified annotation to identify base for Builder classes:");
-            jPanel.add(labelBuilder, new GridConstraints(2, 0, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
-
-            labelAssertionMethod.setText("Builder: full qualified name of static assertion method:");
-            jPanel.add(labelAssertionMethod, new GridConstraints(3, 0, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
-
-
-            jPanel.add(dtoAnnotationName, new GridConstraints(0, 1, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-                    GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
-            jPanel.add(wrapperAnnotationName, new GridConstraints(1, 1, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-                    GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
-            jPanel.add(builderAnnotationName, new GridConstraints(2, 1, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-                    GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
-            jPanel.add(builderAssertionName, new GridConstraints(3, 1, 1, 1,
-                    GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-                    GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                    GridConstraints.SIZEPOLICY_FIXED,
-                    null, null, null));
-
-
-        }
+    private JTextField createTextFieldInSecondColumn(int row) {
+        JTextField textField = new JTextField();
+        jPanel.add(textField, new GridConstraints(row, 1, 1, 1,
+                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
+                GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
+                GridConstraints.SIZEPOLICY_FIXED,
+                null, null, null));
+        return textField;
     }
 
 

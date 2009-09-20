@@ -3,8 +3,8 @@ package de.jigp.plugin.actions.contextmenu.dto;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.util.Computable;
 import com.intellij.psi.PsiClass;
+import de.jigp.plugin.GeneratorPluginContext;
 import de.jigp.plugin.actions.dto.DtoGenerator;
-import de.jigp.plugin.actions.dto.DtoTargetClassChooser;
 import de.jigp.plugin.actions.menu.PsiInfrastructureHolder;
 
 class DtoGeneratorComputable extends PsiInfrastructureHolder implements Computable<PsiClass> {
@@ -16,7 +16,7 @@ class DtoGeneratorComputable extends PsiInfrastructureHolder implements Computab
     }
 
     public PsiClass compute() {
-        String targetClassSuffix = new DtoTargetClassChooser(dataContext).invoke("");
+        String targetClassSuffix = GeneratorPluginContext.getConfiguration().dtoSuffix;
         if (targetClassSuffix != null) {
             return new DtoGenerator(dataContext, selectedInterface, targetClassSuffix).build();
         } else {

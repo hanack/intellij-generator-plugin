@@ -7,6 +7,7 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiMember;
 import com.intellij.psi.search.searches.AnnotatedMembersSearch;
 import com.intellij.util.Query;
+import de.jigp.plugin.GeneratorPluginContext;
 
 import java.util.Collection;
 
@@ -35,8 +36,11 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
     private void handleClasses() {
         Collection<PsiMember> classNames = searchClassNamesToHandle();
         if (classNames != null || classNames.isEmpty()) {
-            String text = "Generate elements for " + classNames.size() + " sources annotated with: " + annotationName + "\n";
-            String targetClassSuffix = targetClassChooser.invoke(text);
+            String targetClassSuffix = targetClassChooser.getDefaultTargetClassSuffix();
+            if (!GeneratorPluginContext.getConfiguration().supressSufix) {
+                String text = "Generate elements for " + classNames.size() + " sources annotated with: " + annotationName + "\n";
+                targetClassSuffix = targetClassChooser.invoke(text);
+            }
             for (PsiMember member : classNames) {
                 PsiClass psiClass = (PsiClass) member.getOriginalElement();
                 //TODO add progress bar

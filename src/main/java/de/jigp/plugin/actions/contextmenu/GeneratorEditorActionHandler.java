@@ -32,12 +32,12 @@ public abstract class GeneratorEditorActionHandler extends EditorActionHandler {
 
     }
 
-    protected abstract Computable<PsiClass> createGenerator(DataContext dataContext, PsiClass selectedInterface);
-
     private void jumpToGeneratoedClass(PsiClass psiClass) {
         Navigatable navigatable = com.intellij.ide.util.EditSourceUtil.getDescriptor(psiClass);
         if (navigatable != null) {
             navigatable.navigate(true);
         }
     }
+
+    protected abstract Computable<PsiClass> createGenerator(DataContext dataContext, PsiClass selectedInterface);
 }
