@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
-    <list default="true" name="Default" comment="- Bugfix generation of constructors&#10;- Bugfix replace methods by signature&#10;- Dialog displays now assertion method in builder generation">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoTargetClassChooser.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoTargetClassChooser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/wrapper/GenerateSpecificDtoActionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/wrapper/GenerateSpecificDtoActionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/DetermineTargetClassChooser.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/DetermineTargetClassChooser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginComponent.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/DtoGeneratorComputable.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/DtoGeneratorComputable.java" />
+    <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/FindAndHandleClassComputable.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/FindAndHandleClassComputable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/wrapper/WrapperTargetClassChooser.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/wrapper/WrapperTargetClassChooser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intellij-generator-plugin.iws" afterPath="$PROJECT_DIR$/intellij-generator-plugin.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/GeneratorEditorActionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/GeneratorEditorActionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/BuilderTargetClassChooser.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/BuilderTargetClassChooser.java" />
     </list>
-    <ignored path="intellij-generator-plugin.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="intellij-generator-plugin.iws" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="true" />
   <component name="Commander">
@@ -109,10 +100,8 @@
       <file leaf-file-name="FindAndHandleClassComputable.java" pinned="true" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/FindAndHandleClassComputable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="433" selection-end="433" vertical-scroll-proportion="0.52369666">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="65" column="45" selection-start="2894" selection-end="2894" vertical-scroll-proportion="1.2331606">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -542,15 +531,15 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1042" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="231" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="248" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="252" />
-    <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="252" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
@@ -566,8 +555,8 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="263" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1046" />
     <property name="dynamic.classpath" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1046" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="267" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
   </component>
@@ -602,12 +591,6 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="intellij-generator-plugin" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" />
-      <log_file path="/Users/jens/Library/Caches/IntelliJIDEA8x/plugins-sandbox/system/log/idea.log" checked="false" skipped="true" show_all="false" alias="IDEA LOG" />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false" runner="emma">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -633,6 +616,12 @@
       <envs />
       <properties />
       <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="intellij-generator-plugin" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" />
+      <log_file path="/Users/jens/Library/Caches/IntelliJIDEA8x/plugins-sandbox/system/log/idea.log" checked="false" skipped="true" show_all="false" alias="IDEA LOG" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false" runner="emma">
       <module name="" />
@@ -753,7 +742,7 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.5" order="7" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34209085" sideWeight="0.47677726" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34209085" sideWeight="0.8085308" order="0" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24958949" sideWeight="0.6635071" order="1" side_tool="false" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
@@ -763,8 +752,8 @@
       <window_info id="UML Diagrams" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.6635071" order="4" side_tool="false" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5165877" sideWeight="0.5" order="14" side_tool="false" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18483412" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.214218" sideWeight="0.5" order="14" side_tool="false" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18483412" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.5" order="11" side_tool="false" />
@@ -784,7 +773,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Bugfix generation of constructors&#10;- Bugfix replace methods by signature&#10;- Dialog displays now assertion method in builder generation" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Supress suffix dialog rudimental implemented." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -798,6 +787,7 @@
     <MESSAGE value="Initial checkin" />
     <MESSAGE value="- Configuration is stored in project scope.&#10;- Annotation based generators reactivated.&#10;- Annotations and Assertions are configurable.&#10;" />
     <MESSAGE value="- Bugfix generation of constructors&#10;- Bugfix replace methods by signature&#10;- Dialog displays now assertion method in builder generation" />
+    <MESSAGE value="- Supress suffix dialog rudimental implemented." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -807,15 +797,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/wrapper/GenerateSpecificDtoActionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/wrapper/GenerateWrapperEditorAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="13" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
@@ -914,12 +895,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/HandleAnnotatedClassAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/FindAndHandleClassComputable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="433" selection-end="433" vertical-scroll-proportion="0.52369666">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="65" column="45" selection-start="2894" selection-end="2894" vertical-scroll-proportion="1.2331606">
+          <folding />
         </state>
       </provider>
     </entry>

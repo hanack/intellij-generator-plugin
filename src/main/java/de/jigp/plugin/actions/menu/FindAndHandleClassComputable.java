@@ -63,7 +63,7 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
     private boolean isPreconditionViolated() {
         PsiClass dtoBaseTypeAnnotation = psiFacade.findClass(annotationName, globalSearchScope);
         if (dtoBaseTypeAnnotation == null) {
-            Messages.showErrorDialog("Projects needs following annotation in classpath: " + annotationName + ".\n Add the annotation to your projects classpath, or configure the plugin with the correct annotation name.", "Error missing annotation.");
+            Messages.showErrorDialog("Project needs following annotation in classpath: " + annotationName + ".\n Add the annotation to your projects classpath, or configure the plugin with the correct annotation name.", "Error missing annotation.");
             return true;
         }
         return false;
