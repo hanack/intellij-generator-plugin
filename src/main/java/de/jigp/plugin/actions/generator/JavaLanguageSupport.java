@@ -5,7 +5,7 @@ import com.intellij.psi.PsiType;
 import java.util.Arrays;
 import java.util.List;
 
-public class KeywordHandler {
+public class JavaLanguageSupport {
 
 
     private static final List<String> keywords = Arrays.asList(

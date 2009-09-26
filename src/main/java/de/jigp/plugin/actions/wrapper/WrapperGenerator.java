@@ -6,7 +6,7 @@ import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiMethod;
 import de.jigp.plugin.GeneratorPluginContext;
 import de.jigp.plugin.actions.generator.AbstractGenerator;
-import de.jigp.plugin.actions.generator.KeywordHandler;
+import de.jigp.plugin.actions.generator.JavaLanguageSupport;
 
 import java.util.Collection;
 
@@ -44,7 +44,7 @@ public class WrapperGenerator extends AbstractGenerator {
         String getterName = determineGetterMethodNameFromGetterMethod(psiMethod);
         String getterCallText = getterName + "()";
         String mapValueType = fieldTypeName;
-        if (KeywordHandler.isPrimitiveType(psiMethod.getReturnType())) {
+        if (JavaLanguageSupport.isPrimitiveType(psiMethod.getReturnType())) {
             mapValueType = convertFieldTypeToNonPrimitive(psiMethod);
         }
 
@@ -63,7 +63,7 @@ public class WrapperGenerator extends AbstractGenerator {
         String fieldTypeName = determineFieldTypeNameFromGetterMethod(psiMethod);
         String setterName = determineSetterMethodNameFromGetterMethod(psiMethod);
         String mapValue = fieldName;
-        if (KeywordHandler.isPrimitiveType(psiMethod.getReturnType())) {
+        if (JavaLanguageSupport.isPrimitiveType(psiMethod.getReturnType())) {
             mapValue = "new " + convertFieldTypeToNonPrimitive(psiMethod) + "(" + fieldName + ")";
         }
         String setMethodText = "public void " + setterName + "(" + fieldTypeName + " " + fieldName + ")" +

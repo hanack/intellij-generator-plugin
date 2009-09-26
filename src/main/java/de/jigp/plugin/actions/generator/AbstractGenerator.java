@@ -166,7 +166,7 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
     protected String determineFieldNameFromGetterMethod(PsiMethod psiMethod) {
 
         String attributeName = StringUtils.lowerCase(psiMethod.getName().substring(3, 4)) + psiMethod.getName().substring(4);
-        attributeName = KeywordHandler.transformToValidAttributeName(attributeName);
+        attributeName = JavaLanguageSupport.transformToValidAttributeName(attributeName);
         return attributeName;
     }
 
@@ -276,6 +276,6 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
     }
 
     protected String convertFieldTypeToNonPrimitive(PsiMethod psiMethod) {
-        return KeywordHandler.convertToNonPrimitive(psiMethod.getReturnType());
+        return JavaLanguageSupport.convertToNonPrimitive(psiMethod.getReturnType());
     }
 }
