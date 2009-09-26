@@ -164,7 +164,10 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
     }
 
     protected String determineFieldNameFromGetterMethod(PsiMethod psiMethod) {
-        return StringUtils.lowerCase(psiMethod.getName().substring(3, 4)) + psiMethod.getName().substring(4);
+
+        String attributeName = StringUtils.lowerCase(psiMethod.getName().substring(3, 4)) + psiMethod.getName().substring(4);
+        attributeName = KeywordHandler.transformToValidAttributeName(attributeName);
+        return attributeName;
     }
 
     protected PsiMethod addOrReplaceMethod(String methodText) {
@@ -258,4 +261,21 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
     protected abstract void afterHandlingHook();
 
     protected abstract void addNewFields();
+
+    protected String determineGetterMethodNameFromGetterMethod(PsiMethod psiMethod) {
+        return psiMethod.getName();
+    }
+
+    protected String determineSetterMethodNameFromGetterMethod(PsiMethod psiMethod) {
+        String setterName = determineGetterMethodNameFromGetterMethod(psiMethod).replaceFirst("g", "s");
+        return setterName;
+    }
+
+    protected String determineFieldTypeNameFromGetterMethod(PsiMethod psiMethod) {
+        return psiMethod.getReturnType().getCanonicalText();
+    }
+
+    protected String convertFieldTypeToNonPrimitive(PsiMethod psiMethod) {
+        return KeywordHandler.convertToNonPrimitive(psiMethod.getReturnType());
+    }
 }

@@ -42,7 +42,6 @@ public class BuilderGenerator extends AbstractGenerator {
 
     @Override
     protected void handleField(PsiField psiField) {
-
         String setMethodText = "public " + sourceClassForGeneration.getQualifiedName() + "." + targetClassName() + " " + psiField.getName() + "(" + psiField.getTypeElement().getType().getCanonicalText() + " " + psiField.getName() + "){"
                 + "instance." + psiField.getName() + "=" + psiField.getName() + ";"
                 + "return this;"

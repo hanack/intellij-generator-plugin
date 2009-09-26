@@ -17,6 +17,7 @@ public class PluginConfigurationPanel extends JComponent {
     private JTextField dtoSuffix;
     private JTextField wrapperSuffix;
     private Checkbox supressSuffix;
+    private Checkbox isGetterUsingOverride;
 
     public PluginConfigurationPanel() {
         initComponents();
@@ -31,6 +32,7 @@ public class PluginConfigurationPanel extends JComponent {
         configuration.wrapperSuffix = wrapperSuffix.getText();
         configuration.builderAssertionName = builderAssertionName.getText();
         configuration.supressSufix = supressSuffix.getState();
+        configuration.isGetterUsingOverride = isGetterUsingOverride.getState();
 
         return configuration;
     }
@@ -44,6 +46,7 @@ public class PluginConfigurationPanel extends JComponent {
         dtoAnnotationName.setText(configuration.dtoAnnotation);
         dtoSuffix.setText(configuration.dtoSuffix);
         supressSuffix.setState(configuration.supressSufix);
+        isGetterUsingOverride.setState(configuration.isGetterUsingOverride);
 
     }
 
@@ -52,7 +55,7 @@ public class PluginConfigurationPanel extends JComponent {
     }
 
     private void initComponents() {
-        int amountRows = 7;
+        int amountRows = 8;
         int amountColumns = 2;
         initializePanel(amountRows, amountColumns);
 
@@ -85,6 +88,11 @@ public class PluginConfigurationPanel extends JComponent {
         addLabelInSecondColumn(row, "Supress suffix dialog");
         supressSuffix = new Checkbox();
         addElementInFirstColumn(row, supressSuffix);
+
+        row++;
+        addLabelInSecondColumn(row, "Should getter use @Override annotation");
+        isGetterUsingOverride = new Checkbox();
+        addElementInFirstColumn(row, isGetterUsingOverride);
     }
 
     private void initializePanel(int amountRows, int amountColumns) {

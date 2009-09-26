@@ -4,8 +4,9 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiMethod;
+import de.jigp.plugin.GeneratorPluginContext;
 import de.jigp.plugin.actions.generator.AbstractGenerator;
-import org.apache.commons.lang.StringUtils;
+import de.jigp.plugin.actions.generator.KeywordHandler;
 
 import java.util.Collection;
 
@@ -39,26 +40,34 @@ public class WrapperGenerator extends AbstractGenerator {
 
     protected void createGetterMethod(PsiMethod psiMethod) {
         String fieldName = determineFieldNameFromGetterMethod(psiMethod);
-        String fieldTypeName = psiMethod.getReturnType().getCanonicalText();
-        String fieldNameCaptilized = StringUtils.upperCase(fieldName.substring(0, 1)) + fieldName.substring(1);
-
-        String getterName = "get" + fieldNameCaptilized;
+        String fieldTypeName = determineFieldTypeNameFromGetterMethod(psiMethod);
+        String getterName = determineGetterMethodNameFromGetterMethod(psiMethod);
         String getterCallText = getterName + "()";
+        String mapValueType = fieldTypeName;
+        if (KeywordHandler.isPrimitiveType(psiMethod.getReturnType())) {
+            mapValueType = convertFieldTypeToNonPrimitive(psiMethod);
+        }
 
-        String getterMethodText = "public " + fieldTypeName + " " + getterCallText +
-                "{ if (modifiedAttributes.containsKey(\"" + fieldName + "\")){ return (" + fieldTypeName + ") modifiedAttributes.get(\"" + fieldName + "\");" +
+        String overrideOrNot = "";
+        if (GeneratorPluginContext.getConfiguration().isGetterUsingOverride) {
+            overrideOrNot = "@Override ";
+        }
+        String getterMethodText = overrideOrNot + "public " + fieldTypeName + " " + getterCallText +
+                "{ if (modifiedAttributes.containsKey(\"" + fieldName + "\")){ return (" + mapValueType + ") modifiedAttributes.get(\"" + fieldName + "\");" +
                 "}else { return delegate." + getterCallText + ";}}";
         addOrReplaceMethod(getterMethodText);
     }
 
     protected void createSetterMethod(PsiMethod psiMethod) {
         String fieldName = determineFieldNameFromGetterMethod(psiMethod);
-        String fieldTypeName = psiMethod.getReturnType().getCanonicalText();
-        String fieldNameCaptilized = StringUtils.upperCase(fieldName.substring(0, 1)) + fieldName.substring(1);
-        String setterName = "set" + fieldNameCaptilized;
-
+        String fieldTypeName = determineFieldTypeNameFromGetterMethod(psiMethod);
+        String setterName = determineSetterMethodNameFromGetterMethod(psiMethod);
+        String mapValue = fieldName;
+        if (KeywordHandler.isPrimitiveType(psiMethod.getReturnType())) {
+            mapValue = "new " + convertFieldTypeToNonPrimitive(psiMethod) + "(" + fieldName + ")";
+        }
         String setMethodText = "public void " + setterName + "(" + fieldTypeName + " " + fieldName + ")" +
-                "{ modifiedAttributes.put(\"" + fieldName + "\"," + fieldName + ");}";
+                "{ modifiedAttributes.put(\"" + fieldName + "\"," + mapValue + ");}";
         addOrReplaceMethod(setMethodText);
 
     }
@@ -84,7 +93,7 @@ public class WrapperGenerator extends AbstractGenerator {
 
     private void addModifiedAttributesField() {
         PsiField field =
-                psiElementFactory.createFieldFromText("private java.util.HashMap<Object,Object> modifiedAttributes = new java.util.HashMap<Object,Object>();", null);
+                psiElementFactory.createFieldFromText("private java.util.HashMap<String,Object> modifiedAttributes = new java.util.HashMap<String,Object>();", null);
         addField(field);
     }
 }

@@ -101,6 +101,7 @@ public class GeneratorPluginComponent implements ProjectComponent, Configurable,
         public String dtoSuffix;
         public String wrapperSuffix;
         public boolean supressSufix;
+        public boolean isGetterUsingOverride = true;
 
         public Configuration() {
             reinitNullValues();
@@ -112,6 +113,7 @@ public class GeneratorPluginComponent implements ProjectComponent, Configurable,
             builderAssertionName = isEmpty(builderAssertionName) ? "org.springframework.util.Assert.notNull" : builderAssertionName;
             dtoSuffix = isEmpty(dtoSuffix) ? "Dto" : dtoSuffix;
             wrapperSuffix = isEmpty(wrapperSuffix) ? "Wrapper" : wrapperSuffix;
+            isGetterUsingOverride = true;
         }
 
         private boolean isEmpty(String string) {
@@ -127,6 +129,8 @@ public class GeneratorPluginComponent implements ProjectComponent, Configurable,
 
             Configuration that = (Configuration) o;
 
+            if (isGetterUsingOverride != that.isGetterUsingOverride) return false;
+            if (supressSufix != that.supressSufix) return false;
             if (builderAnnotation != null ? !builderAnnotation.equals(that.builderAnnotation) : that.builderAnnotation != null)
                 return false;
             if (builderAssertionName != null ? !builderAssertionName.equals(that.builderAssertionName) : that.builderAssertionName != null)
@@ -150,6 +154,8 @@ public class GeneratorPluginComponent implements ProjectComponent, Configurable,
             result = 31 * result + (builderAssertionName != null ? builderAssertionName.hashCode() : 0);
             result = 31 * result + (dtoSuffix != null ? dtoSuffix.hashCode() : 0);
             result = 31 * result + (wrapperSuffix != null ? wrapperSuffix.hashCode() : 0);
+            result = 31 * result + (supressSufix ? 1 : 0);
+            result = 31 * result + (isGetterUsingOverride ? 1 : 0);
             return result;
         }
     }

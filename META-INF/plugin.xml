@@ -6,12 +6,13 @@
             <implementation-class>de.jigp.plugin.GeneratorPluginComponent</implementation-class>
         </component>
     </project-components>
-
     <description>
         <![CDATA[
         This plugin generates builder, dtos or special wrappers for given classes. It is based on code of the GenerateBuilder plugin.
       ]]>
     </description>
+    <vendor url=""
+            email="jens.hanack@gmx.de">Jens Hanack</vendor>
     <version>0.1</version>
     <idea-version since-build="8000"/>
     <actions>

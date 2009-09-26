@@ -4,8 +4,9 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiMethod;
+import com.intellij.psi.PsiType;
+import de.jigp.plugin.GeneratorPluginContext;
 import de.jigp.plugin.actions.generator.AbstractGenerator;
-import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +17,10 @@ public class DtoGenerator extends AbstractGenerator {
 
     private String copyConstructorMethodText = "";
     private List<String> collectionClassNames;
+    private PsiType fieldType;
+    private String fieldName;
+    private String fieldTypeName;
+    private PsiMethod psiMethod;
 
 
     public DtoGenerator(DataContext dataContext, PsiClass annotatedClass, String targetClassSuffix) {
@@ -53,14 +58,15 @@ public class DtoGenerator extends AbstractGenerator {
     }
 
     protected void handleMethod(PsiMethod psiMethod) {
-        com.intellij.psi.PsiType fieldType = psiMethod.getReturnType();
-        String fieldName = determineFieldNameFromGetterMethod(psiMethod);
-        String fieldTypeName = fieldType.getCanonicalText();
+        this.psiMethod = psiMethod;
+        fieldType = psiMethod.getReturnType();
+        fieldName = determineFieldNameFromGetterMethod(psiMethod);
+        fieldTypeName = fieldType.getCanonicalText();
 
-        createField(fieldName, fieldTypeName);
-        createGetter(fieldName, fieldTypeName);
-        createSetter(fieldName, fieldTypeName);
-        addConsturctorTexts(fieldName);
+        createField();
+        createGetter();
+        createSetter();
+        addConstructorTextForType();
         addReturnTypeToImportList(psiMethod);
     }
 
@@ -69,30 +75,30 @@ public class DtoGenerator extends AbstractGenerator {
         super.appendClassToImportList(importClass);
     }
 
-    private void createField(String fieldName, String fieldTypeName) {
+    private void createField() {
         PsiField field = psiElementFactory.createFieldFromText("private " + fieldTypeName + " "
                 + fieldName + ";", null);
         this.addField(field);
     }
 
-    private void createSetter(String fieldName, String fieldTypeName) {
-        String setMethodText = "public void set" +
-                StringUtils.capitalize(fieldName) + "(" + fieldTypeName + " " + fieldName + ") {" +
+    private void createSetter() {
+        String setterMethodName = determineSetterMethodNameFromGetterMethod(psiMethod);
+        String setMethodText = "public void " + setterMethodName + "(" + fieldTypeName + " " + fieldName + ") {" +
                 "this." + fieldName + "=" + fieldName + ";}";
         addOrReplaceMethod(setMethodText);
     }
 
-    private void createGetter(String fieldName, String fieldTypeName) {
-        String methodText = "public " + fieldTypeName + " get" +
-                StringUtils.capitalize(fieldName) + "() {" +
+    private void createGetter() {
+        String getterMethodName = determineGetterMethodNameFromGetterMethod(psiMethod);
+        String overrideOrNot = "";
+        if (GeneratorPluginContext.getConfiguration().isGetterUsingOverride) {
+            overrideOrNot = "@Override";
+        }
+        String methodText = overrideOrNot + " public " + fieldTypeName + " " + getterMethodName + "() {" +
                 "return this." + fieldName + ";}";
         PsiMethod getterMethod = this.addOrReplaceMethod(methodText);
 
         addReturnTypeToImportList(getterMethod);
-    }
-
-    private void addConsturctorTexts(String fieldName) {
-        addConstructorTextForType(fieldName);
     }
 
 
@@ -101,8 +107,9 @@ public class DtoGenerator extends AbstractGenerator {
         addOrReplaceMethod(defaultConstructorMethodText);
     }
 
-    private void addConstructorTextForType(String fieldName) {
-        copyConstructorMethodText += "this." + fieldName + "=original.get" + StringUtils.capitalize(fieldName) + "();";
+    private void addConstructorTextForType() {
+        String getterMethodName = determineGetterMethodNameFromGetterMethod(psiMethod);
+        copyConstructorMethodText += "this." + fieldName + "=original." + getterMethodName + "();";
 
     }
 }
