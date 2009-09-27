@@ -2,7 +2,9 @@
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/META-INF/plugin.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/changelog.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stepsChangeUpload.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.key/index.apxl.gz" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/index.apxl.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intellij-generator-plugin.iws" afterPath="$PROJECT_DIR$/intellij-generator-plugin.iws" />
     </list>
     <ignored path="intellij-generator-plugin.iws" />
@@ -110,26 +112,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="plugin.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/META-INF/plugin.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="16" selection-start="646" selection-end="646" vertical-scroll-proportion="0.34">
+            <state line="15" column="16" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonInterface.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/documentation/screenshots/PersonInterface.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="stepsChangeUpload.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stepsChangeUpload.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="35" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonWrapper.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/documentation/screenshots/PersonWrapper.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="changelog.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/changelog.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="5" selection-start="14" selection-end="14" vertical-scroll-proportion="0.022666667">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -214,24 +220,6 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="META-INF" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -506,7 +494,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Documentation:&#10;- screenshots added&#10;- keynote presentation for screenshots added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.2" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -530,6 +518,7 @@
     <MESSAGE value="Builder generation:&#10;- selection of attributes enhanced with special column for assertions (hack)&#10;- needs further refactoring" />
     <MESSAGE value="Builder generation:&#10;- Refactoring of assertion selection" />
     <MESSAGE value="Documentation:&#10;- screenshots added&#10;- keynote presentation for screenshots added" />
+    <MESSAGE value="Version 0.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -539,51 +528,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/PsiFieldFilterDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="66" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#PsiFieldFilterDialog#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#init#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#createCenterPanel#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#addTableToPanel#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#createTable#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#setTableColumnWidths#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#createTableRowData#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#createPanel#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#createRowEntry#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#addSelectionButtons#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#createTableModel#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="class#3579:4663" expanded="false" />
-            <element signature="method#getColumnName#0;class#3579:4663" expanded="false" />
-            <element signature="method#getRowCount#0;class#3579:4663" expanded="false" />
-            <element signature="method#getColumnCount#0;class#3579:4663" expanded="false" />
-            <element signature="method#getValueAt#0;class#3579:4663" expanded="false" />
-            <element signature="method#isCellEditable#0;class#3579:4663" expanded="false" />
-            <element signature="method#setValueAt#0;class#3579:4663" expanded="false" />
-            <element signature="method#getColumnClass#0;class#3579:4663" expanded="false" />
-            <element signature="method#isColumnSelectable#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#getSelectedPsiFields#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#getAssertionPsiFields#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#getSelectedFieldsForColumn#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#actionPerformed#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#toggleAllAssertionsSelection#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#toggleAllAttributesSelection#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#toggledAssertionSelection#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#toggledAttributeSelection#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#updateSelectionColumn#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#setAllAssertionsSelected#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="class#PsiFieldComparator#0;class#PsiFieldFilterDialog#0" expanded="false" />
-            <element signature="method#compare#0;class#PsiFieldComparator#0;class#PsiFieldFilterDialog#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/documentation/pluginScreenshots.001.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/pluginScreenshots.002.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -651,7 +595,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/META-INF/plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="646" selection-end="646" vertical-scroll-proportion="0.34">
+        <state line="15" column="16" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stepsChangeUpload.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="35" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changelog.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="5" selection-start="14" selection-end="14" vertical-scroll-proportion="0.022666667">
           <folding />
         </state>
       </provider>

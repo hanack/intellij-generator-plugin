@@ -1,0 +1,12 @@
+1. modify sources
+2. test modifications
+3. create new screenshots / update old ones
+4. modify keynote presentation
+5. describe change in changelog.txt
+5. push/pull to github
+6. update wiki on github
+7. create new intellij-generator-plugin.jar
+8. upload to jetbrains repo
+8.1. set changelog entry in rss field
+8.2. update screenshots
+8.3. upload jar
