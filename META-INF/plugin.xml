@@ -8,10 +8,10 @@
     </project-components>
     <description>
         <![CDATA[
-        This plugin generates builder, dtos or special wrappers for given classes. It is based on code of the GenerateBuilder plugin.
+        This plugin generates builder, dtos or special wrappers for given interfaces or classes.
       ]]>
     </description>
-    <vendor url=""
+    <vendor url="http://wiki.github.com/hanack/intellij-generator-plugin"
             email="jens.hanack@gmx.de">Jens Hanack</vendor>
     <version>0.1</version>
     <idea-version since-build="8000"/>
