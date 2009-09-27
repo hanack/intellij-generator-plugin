@@ -37,37 +37,55 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
     public PsiFieldFilterDialog(PsiField[] psiFields) {
         super(true);
         this.psiFields = psiFields;
+        this.init();
+
+    }
+
+    protected void init() {
         setTitle("Attribute selection");
         setResizable(true);
-        init();
+        super.init();
     }
 
     protected JComponent createCenterPanel() {
-        panel = new JPanel();
+        createPanel();
+        addTableToPanel();
+        addSelectionButtons();
+        return panel;
+    }
 
+    private void addTableToPanel() {
+        createTable();
+        JScrollPane tablePane = new JScrollPane(table);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(tablePane);
+    }
+
+    private void createTable() {
+        createTableRowData();
+        createTableModel();
+        table = new JTable(tableModel);
+        setTableColumnWidths();
+    }
+
+    private void setTableColumnWidths() {
+        table.getColumnModel().getColumn(COL_INDEX_ATTRIBUTESELECTION).setPreferredWidth(150);
+        table.getColumnModel().getColumn(COL_INDEX_ASSERTIONSELECTION).setPreferredWidth(250);
+        table.getColumnModel().getColumn(2).setPreferredWidth(550);
+        table.getColumnModel().getColumn(3).setPreferredWidth(350);
+    }
+
+    private void createTableRowData() {
         rowData = new Object[psiFields.length][3];
         int i = 0;
         Arrays.sort(psiFields, psiFieldComparator);
         for (PsiField psiField : psiFields) {
             rowData[i++] = createRowEntry(psiField);
         }
+    }
 
-        tableModel = createTableModel();
-
-        table = new JTable(tableModel);
-
-        table.getColumnModel().getColumn(COL_INDEX_ATTRIBUTESELECTION).setPreferredWidth(80);
-        table.getColumnModel().getColumn(COL_INDEX_ASSERTIONSELECTION).setPreferredWidth(90);
-        table.getColumnModel().getColumn(2).setPreferredWidth(350);
-        table.getColumnModel().getColumn(3).setPreferredWidth(350);
-
-        JScrollPane pane = new JScrollPane(table);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.add(pane);
-
-        addSelectionButtons();
-
-        return panel;
+    private void createPanel() {
+        panel = new JPanel();
     }
 
     private Object[] createRowEntry(PsiField psiField) {
@@ -89,8 +107,8 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
         panel.add(buttonPanel);
     }
 
-    protected TableModel createTableModel() {
-        return new AbstractTableModel() {
+    protected void createTableModel() {
+        tableModel = new AbstractTableModel() {
             String[] columnNames = new String[]{"attribute", "with assertion", "name", "type"};
 
             public String getColumnName(int col) {
@@ -153,22 +171,33 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
         return selectedPsiFields;
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (attributesSelection.equals(e.getSource())) {
-            attributesSelection.setText(toggledAttributeSelection());
-            updateSelectionColumn(COL_INDEX_ATTRIBUTESELECTION, isAllAttributesSelected);
-            if (!isAllAttributesSelected) {
-                assertionsSelection.setText(assertionsAllText);
-                isAllAssertionsSelected = false;
-                updateSelectionColumn(COL_INDEX_ASSERTIONSELECTION, isAllAssertionsSelected);
-            }
+    public void actionPerformed(ActionEvent actionEvent) {
+        if (attributesSelection.equals(actionEvent.getSource())) {
+            toggleAllAttributesSelection();
 
-        } else if (assertionsSelection.equals(e.getSource())) {
-            assertionsSelection.setText(toggledAssertionSelection());
-            updateSelectionColumn(COL_INDEX_ASSERTIONSELECTION, isAllAssertionsSelected);
-
+        } else if (assertionsSelection.equals(actionEvent.getSource())) {
+            toggleAllAssertionsSelection();
         }
         this.table.updateUI();
+    }
+
+    private void toggleAllAssertionsSelection() {
+        assertionsSelection.setText(toggledAssertionSelection());
+        if (isAllAssertionsSelected) {
+            setAllAssertionsSelected();
+        } else {
+            updateSelectionColumn(COL_INDEX_ASSERTIONSELECTION, isAllAssertionsSelected);
+        }
+    }
+
+    private void toggleAllAttributesSelection() {
+        attributesSelection.setText(toggledAttributeSelection());
+        updateSelectionColumn(COL_INDEX_ATTRIBUTESELECTION, isAllAttributesSelected);
+        if (!isAllAttributesSelected) {
+            assertionsSelection.setText(assertionsAllText);
+            isAllAssertionsSelected = false;
+            updateSelectionColumn(COL_INDEX_ASSERTIONSELECTION, isAllAssertionsSelected);
+        }
     }
 
     private String toggledAssertionSelection() {
@@ -179,7 +208,6 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
             isAllAssertionsSelected = !isAllAssertionsSelected;
             return assertionsNonText;
         }
-
     }
 
     private String toggledAttributeSelection() {
@@ -198,9 +226,15 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
         }
     }
 
+    private void setAllAssertionsSelected() {
+        for (Object[] row : rowData) {
+            if ((Boolean) row[COL_INDEX_ATTRIBUTESELECTION]) {
+                row[COL_INDEX_ASSERTIONSELECTION] = true;
+            }
+        }
+    }
 
     public static class PsiFieldComparator implements Comparator<PsiField> {
-
         public int compare(PsiField psiField, PsiField psiField1) {
             if (psiField == null || psiField1 == null) {
                 return -1;

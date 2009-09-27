@@ -70,9 +70,8 @@ public class BuilderGenerator extends AbstractGenerator {
                 buildMethodText += attributeAssertionText;
             }
         }
-        buildMethodText +=
-                "return instance;"
-                        + "}";
+        buildMethodText += "return instance;"
+                + "}";
 
         this.addOrReplaceMethod(buildMethodText);
     }
