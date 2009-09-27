@@ -2,63 +2,96 @@ package de.jigp.plugin.actions.builder;
 
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.psi.PsiField;
-import de.jigp.plugin.GeneratorPluginContext;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 
-public class PsiFieldFilterDialog extends DialogWrapper {
+public class PsiFieldFilterDialog extends DialogWrapper implements ActionListener {
 
     private PsiField[] psiFields;
 
     private Object[][] rowData;
     private TableModel tableModel;
-    private JCheckBox checkboxWithAssertions;
+    private JButton attributesSelection;
+    private JButton assertionsSelection;
     private PsiFieldComparator psiFieldComparator = new PsiFieldComparator();
+    private JPanel panel;
+    private JTable table;
+
+    private static final int COL_INDEX_ATTRIBUTESELECTION = 0;
+    private static final int COL_INDEX_ASSERTIONSELECTION = 1;
+    private boolean isAllAttributesSelected = true;
+    private boolean isAllAssertionsSelected = true;
+    private String attributesAllText = "all attributes";
+    private String attributesNonText = "no attributes";
+    private String assertionsAllText = "all assertions";
+    private String assertionsNonText = "no assertions";
 
     public PsiFieldFilterDialog(PsiField[] psiFields) {
         super(true);
         this.psiFields = psiFields;
-        setTitle("Attribute Selection");
+        setTitle("Attribute selection");
         setResizable(true);
         init();
     }
 
     protected JComponent createCenterPanel() {
-        JPanel panel = new JPanel();
+        panel = new JPanel();
 
-        rowData = new Object[psiFields.length][2];
+        rowData = new Object[psiFields.length][3];
         int i = 0;
         Arrays.sort(psiFields, psiFieldComparator);
         for (PsiField psiField : psiFields) {
-            rowData[i++] = new Object[]{true, psiField.getName(), psiField.getTypeElement().getType().getPresentableText()};
+            rowData[i++] = createRowEntry(psiField);
         }
-
 
         tableModel = createTableModel();
 
-        JTable table;
         table = new JTable(tableModel);
 
-        table.getColumnModel().getColumn(0).setPreferredWidth(10);
+        table.getColumnModel().getColumn(COL_INDEX_ATTRIBUTESELECTION).setPreferredWidth(80);
+        table.getColumnModel().getColumn(COL_INDEX_ASSERTIONSELECTION).setPreferredWidth(90);
+        table.getColumnModel().getColumn(2).setPreferredWidth(350);
+        table.getColumnModel().getColumn(3).setPreferredWidth(350);
 
         JScrollPane pane = new JScrollPane(table);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(pane);
 
-        checkboxWithAssertions = new JCheckBox("Create assertions for selected attributes in builder.\nThe configured assertion Method is " + GeneratorPluginContext.getConfiguration().builderAssertionName, false);
-        panel.add(checkboxWithAssertions);
+        addSelectionButtons();
+
         return panel;
+    }
+
+    private Object[] createRowEntry(PsiField psiField) {
+        return new Object[]{true, true, psiField.getName(), psiField.getTypeElement().getType().getPresentableText()};
+    }
+
+    protected void addSelectionButtons() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+
+        attributesSelection = new JButton(attributesNonText);
+        attributesSelection.addActionListener(this);
+
+        assertionsSelection = new JButton(assertionsNonText);
+        assertionsSelection.addActionListener(this);
+
+        buttonPanel.add(attributesSelection);
+        buttonPanel.add(assertionsSelection);
+        panel.add(buttonPanel);
     }
 
     protected TableModel createTableModel() {
         return new AbstractTableModel() {
-            String[] columnNames = new String[]{"", "Attribute", "Type"};
+            String[] columnNames = new String[]{"attribute", "with assertion", "name", "type"};
 
             public String getColumnName(int col) {
                 return columnNames[col];
@@ -77,7 +110,7 @@ public class PsiFieldFilterDialog extends DialogWrapper {
             }
 
             public boolean isCellEditable(int row, int col) {
-                return col == 0;
+                return isColumnSelectable(col);
             }
 
             public void setValueAt(Object value, int row, int col) {
@@ -87,7 +120,7 @@ public class PsiFieldFilterDialog extends DialogWrapper {
 
             @Override
             public Class<?> getColumnClass(int i) {
-                if (i == 0) {
+                if (isColumnSelectable(i)) {
                     return Boolean.class;
                 }
                 return super.getColumnClass(i);
@@ -95,11 +128,23 @@ public class PsiFieldFilterDialog extends DialogWrapper {
         };
     }
 
+    private boolean isColumnSelectable(int col) {
+        return col == COL_INDEX_ATTRIBUTESELECTION || col == COL_INDEX_ASSERTIONSELECTION;
+    }
+
     public Collection<PsiField> getSelectedPsiFields() {
+        return getSelectedFieldsForColumn(COL_INDEX_ATTRIBUTESELECTION);
+    }
+
+    public Collection<PsiField> getAssertionPsiFields() {
+        return getSelectedFieldsForColumn(COL_INDEX_ASSERTIONSELECTION);
+    }
+
+    private Collection<PsiField> getSelectedFieldsForColumn(int column) {
         Collection<PsiField> selectedPsiFields = new ArrayList<PsiField>();
-        int row = 0;
+        int row = COL_INDEX_ATTRIBUTESELECTION;
         for (PsiField psiField : psiFields) {
-            Boolean isSelected = (Boolean) tableModel.getValueAt(row, 0);
+            Boolean isSelected = (Boolean) tableModel.getValueAt(row, column);
             row++;
             if (isSelected) {
                 selectedPsiFields.add(psiField);
@@ -108,9 +153,51 @@ public class PsiFieldFilterDialog extends DialogWrapper {
         return selectedPsiFields;
     }
 
-    public boolean isWithAssertions() {
-        return checkboxWithAssertions.isSelected();
+    public void actionPerformed(ActionEvent e) {
+        if (attributesSelection.equals(e.getSource())) {
+            attributesSelection.setText(toggledAttributeSelection());
+            updateSelectionColumn(COL_INDEX_ATTRIBUTESELECTION, isAllAttributesSelected);
+            if (!isAllAttributesSelected) {
+                assertionsSelection.setText(assertionsAllText);
+                isAllAssertionsSelected = false;
+                updateSelectionColumn(COL_INDEX_ASSERTIONSELECTION, isAllAssertionsSelected);
+            }
+
+        } else if (assertionsSelection.equals(e.getSource())) {
+            assertionsSelection.setText(toggledAssertionSelection());
+            updateSelectionColumn(COL_INDEX_ASSERTIONSELECTION, isAllAssertionsSelected);
+
+        }
+        this.table.updateUI();
     }
+
+    private String toggledAssertionSelection() {
+        if (isAllAssertionsSelected) {
+            isAllAssertionsSelected = !isAllAssertionsSelected;
+            return assertionsAllText;
+        } else {
+            isAllAssertionsSelected = !isAllAssertionsSelected;
+            return assertionsNonText;
+        }
+
+    }
+
+    private String toggledAttributeSelection() {
+        if (isAllAttributesSelected) {
+            isAllAttributesSelected = !isAllAttributesSelected;
+            return attributesAllText;
+        } else {
+            isAllAttributesSelected = !isAllAttributesSelected;
+            return attributesNonText;
+        }
+    }
+
+    private void updateSelectionColumn(int colIndex, boolean isSelected) {
+        for (Object[] row : rowData) {
+            row[colIndex] = isSelected;
+        }
+    }
+
 
     public static class PsiFieldComparator implements Comparator<PsiField> {
 

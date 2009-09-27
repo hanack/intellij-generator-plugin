@@ -17,6 +17,7 @@ import java.util.List;
 public class BuilderGenerator extends AbstractGenerator {
     private boolean isWithAssertions;
     private List<String> attributeAssertionTexts = new ArrayList<String>();
+    private Collection<PsiField> assertionPsiFields;
 
 
     public BuilderGenerator(DataContext dataContext, PsiClass targetClassSuffix, String annotatedClass) {
@@ -48,10 +49,16 @@ public class BuilderGenerator extends AbstractGenerator {
                 + "}";
         this.addOrReplaceMethod(setMethodText);
 
-        String assertionText = GeneratorPluginContext.getConfiguration().builderAssertionName + "(instance." + psiField.getName() + ", \"Attribute: " + psiField.getName() + "\");";
-        attributeAssertionTexts.add(assertionText);
+        if (isAssertionForFieldEnabled(psiField)) {
+            String assertionText = GeneratorPluginContext.getConfiguration().builderAssertionName + "(instance." + psiField.getName() + ", \"Attribute: " + psiField.getName() + "\");";
+            attributeAssertionTexts.add(assertionText);
+        }
 
 
+    }
+
+    private boolean isAssertionForFieldEnabled(PsiField psiField) {
+        return isWithAssertions && (assertionPsiFields == null || assertionPsiFields.contains(psiField));
     }
 
     @Override
@@ -88,11 +95,12 @@ public class BuilderGenerator extends AbstractGenerator {
         }
         PsiFieldFilterDialog psiFieldFilterDialog = new PsiFieldFilterDialog(psiFields);
         psiFieldFilterDialog.show();
-        isWithAssertions = psiFieldFilterDialog.isWithAssertions();
+        isWithAssertions = true;
         Collection<PsiField> selectedPsiFields = psiFieldFilterDialog.getSelectedPsiFields();
         if (psiFieldFilterDialog.getExitCode() == PsiFieldFilterDialog.CANCEL_EXIT_CODE) {
             throw new CancelActionException();
         }
+        assertionPsiFields = psiFieldFilterDialog.getAssertionPsiFields();
         return selectedPsiFields;
     }
 
