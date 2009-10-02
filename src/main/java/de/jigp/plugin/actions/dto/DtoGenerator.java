@@ -2,11 +2,13 @@ package de.jigp.plugin.actions.dto;
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiExpression;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiType;
 import de.jigp.plugin.GeneratorPluginContext;
 import de.jigp.plugin.actions.generator.AbstractGenerator;
+import de.jigp.plugin.configuration.Configuration;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,12 +23,14 @@ public class DtoGenerator extends AbstractGenerator {
     private String fieldName;
     private String fieldTypeName;
     private PsiMethod psiMethod;
+    private Configuration configuration;
 
 
     public DtoGenerator(DataContext dataContext, PsiClass annotatedClass, String targetClassSuffix) {
         super(dataContext, targetClassSuffix, annotatedClass, true, false);
         collectionClassNames = new ArrayList<String>();
         collectionClassNames.add(java.util.Collection.class.getName());
+        configuration = GeneratorPluginContext.getConfiguration();
     }
 
 
@@ -78,6 +82,15 @@ public class DtoGenerator extends AbstractGenerator {
     private void createField() {
         PsiField field = psiElementFactory.createFieldFromText("private " + fieldTypeName + " "
                 + fieldName + ";", null);
+
+        //TODO convert "" to null and handle exception
+        String initializerText = configuration.variableInitializers.getText(field.getType());
+
+        PsiExpression initializer = null;
+        if (initializerText != null) {
+            initializer = psiElementFactory.createExpressionFromText(initializerText, null);
+        }
+        field.setInitializer(initializer);
         this.addField(field);
     }
 
@@ -91,7 +104,7 @@ public class DtoGenerator extends AbstractGenerator {
     private void createGetter() {
         String getterMethodName = determineGetterMethodNameFromGetterMethod(psiMethod);
         String overrideOrNot = "";
-        if (GeneratorPluginContext.getConfiguration().isGetterUsingOverride) {
+        if (configuration.isGetterUsingOverride) {
             overrideOrNot = "@Override";
         }
         String methodText = overrideOrNot + " public " + fieldTypeName + " " + getterMethodName + "() {" +

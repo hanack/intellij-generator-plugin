@@ -2,8 +2,6 @@ package de.jigp.plugin.configuration;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import de.jigp.plugin.GeneratorPluginComponent;
-import de.jigp.plugin.GeneratorPluginComponent.Configuration;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +22,7 @@ public class PluginConfigurationPanel extends JComponent {
     }
 
     public Configuration getConfiguration() {
-        Configuration configuration = new GeneratorPluginComponent.Configuration();
+        Configuration configuration = new Configuration();
         configuration.builderAnnotation = builderAnnotationName.getText();
         configuration.dtoAnnotation = dtoAnnotationName.getText();
         configuration.dtoSuffix = dtoSuffix.getText();

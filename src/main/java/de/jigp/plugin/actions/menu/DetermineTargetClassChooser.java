@@ -4,14 +4,16 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public abstract class DetermineTargetClassChooser extends PsiInfrastructureHolder {
-    private String[] defaultSuffixes;
+    private List<String> defaultSuffixes;
 
     public DetermineTargetClassChooser(String[] defaultSuffixes, DataContext dataContext) {
         super(dataContext);
-        this.defaultSuffixes = defaultSuffixes;
+        this.defaultSuffixes = Arrays.asList(defaultSuffixes);
     }
 
     public String invoke(String headlineText) {
@@ -25,11 +27,14 @@ public abstract class DetermineTargetClassChooser extends PsiInfrastructureHolde
                 return Pattern.matches("\\w+?", suffix);
             }
         };
-        String targetClassSuffix = Messages.showEditableChooseDialog(headlineText+"\nEnter suffix for generated classes.",
+
+        String[] suffixes = (String[]) defaultSuffixes.toArray(new String[0]);
+
+        String targetClassSuffix = Messages.showEditableChooseDialog(headlineText + "\nEnter suffix for generated classes.",
                 "Suffix",
                 Messages.getQuestionIcon(),
-                defaultSuffixes,
-                defaultSuffixes[0],
+                suffixes,
+                defaultSuffixes.get(0),
                 validator);
         return targetClassSuffix;
     }

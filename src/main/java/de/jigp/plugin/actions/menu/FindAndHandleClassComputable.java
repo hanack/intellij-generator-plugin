@@ -35,7 +35,7 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
 
     private void handleClasses() {
         Collection<PsiMember> classNames = searchClassNamesToHandle();
-        if (classNames != null || classNames.isEmpty()) {
+        if (classNames != null && !classNames.isEmpty()) {
             String targetClassSuffix = targetClassChooser.getDefaultTargetClassSuffix();
             if (!GeneratorPluginContext.getConfiguration().supressSufix) {
                 String text = "Generate elements for " + classNames.size() + " sources annotated with: " + annotationName + "\n";

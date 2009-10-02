@@ -1,4 +1,4 @@
 package de.jigp.plugin.actions.generator;
 
-public class CancelActionException extends Throwable {
+public class CancelActionException extends Exception {
 }

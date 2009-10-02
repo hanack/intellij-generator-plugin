@@ -8,14 +8,17 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class PsiFieldFilterDialog extends DialogWrapper implements ActionListener {
 
-    private PsiField[] psiFields;
+    private List<PsiField> psiFields;
 
     private Object[][] rowData;
     private TableModel tableModel;
@@ -36,7 +39,7 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
 
     public PsiFieldFilterDialog(PsiField[] psiFields) {
         super(true);
-        this.psiFields = psiFields;
+        this.psiFields = Arrays.asList(psiFields);
         this.init();
 
     }
@@ -76,9 +79,9 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
     }
 
     private void createTableRowData() {
-        rowData = new Object[psiFields.length][3];
+        rowData = new Object[psiFields.size()][3];
         int i = 0;
-        Arrays.sort(psiFields, psiFieldComparator);
+        Collections.sort(psiFields, psiFieldComparator);
         for (PsiField psiField : psiFields) {
             rowData[i++] = createRowEntry(psiField);
         }
@@ -234,7 +237,7 @@ public class PsiFieldFilterDialog extends DialogWrapper implements ActionListene
         }
     }
 
-    public static class PsiFieldComparator implements Comparator<PsiField> {
+    public static class PsiFieldComparator implements Comparator<PsiField>, Serializable {
         public int compare(PsiField psiField, PsiField psiField1) {
             if (psiField == null || psiField1 == null) {
                 return -1;

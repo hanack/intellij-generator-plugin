@@ -63,17 +63,17 @@ public class BuilderGenerator extends AbstractGenerator {
 
     @Override
     protected void afterHandlingHook() {
-        String buildMethodText = "public " + sourceClassForGeneration.getQualifiedName() + " build(){";
+        StringBuilder buildMethodText = new StringBuilder("public ");
+        buildMethodText.append(sourceClassForGeneration.getQualifiedName()).append(" build(){");
 
         if (isWithAssertions) {
             for (String attributeAssertionText : attributeAssertionTexts) {
-                buildMethodText += attributeAssertionText;
+                buildMethodText.append(attributeAssertionText);
             }
         }
-        buildMethodText += "return instance;"
-                + "}";
+        buildMethodText.append("return instance;}");
 
-        this.addOrReplaceMethod(buildMethodText);
+        this.addOrReplaceMethod(buildMethodText.toString());
     }
 
     @Override

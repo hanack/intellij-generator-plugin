@@ -7,7 +7,7 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.util.xmlb.XmlSerializerUtil;
-import de.jigp.plugin.GeneratorPluginComponent.Configuration;
+import de.jigp.plugin.configuration.Configuration;
 import de.jigp.plugin.configuration.PluginConfigurationPanel;
 import org.jetbrains.annotations.NotNull;
 
@@ -66,7 +66,7 @@ public class GeneratorPluginComponent implements ProjectComponent, Configurable,
     }
 
     public boolean isModified() {
-        return !this.equals(configurationPanel.getConfiguration());
+        return !this.configuration.equals(configurationPanel.getConfiguration());
     }
 
     public String getDisplayName() {
@@ -92,73 +92,5 @@ public class GeneratorPluginComponent implements ProjectComponent, Configurable,
         configuration.reinitNullValues();
         GeneratorPluginContext.setConfiguration(configuration);
     }
-
-    public static class Configuration {
-        public String dtoAnnotation;
-        public String wrapperAnnotation;
-        public String builderAnnotation;
-        public String builderAssertionName;
-        public String dtoSuffix;
-        public String wrapperSuffix;
-        public boolean supressSufix;
-        public boolean isGetterUsingOverride = true;
-
-        public Configuration() {
-            reinitNullValues();
-        }
-
-        public void reinitNullValues() {
-            dtoAnnotation = isEmpty(dtoAnnotation) ? "DtoAnnotationType" : dtoAnnotation;
-            builderAnnotation = isEmpty(builderAnnotation) ? "BuilderAnnotationType" : builderAnnotation;
-            builderAssertionName = isEmpty(builderAssertionName) ? "org.springframework.util.Assert.notNull" : builderAssertionName;
-            dtoSuffix = isEmpty(dtoSuffix) ? "Dto" : dtoSuffix;
-            wrapperSuffix = isEmpty(wrapperSuffix) ? "Wrapper" : wrapperSuffix;
-            isGetterUsingOverride = true;
-        }
-
-        private boolean isEmpty(String string) {
-            boolean isEmpty = string == null
-                    || string.trim().equals("");
-            return isEmpty;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            Configuration that = (Configuration) o;
-
-            if (isGetterUsingOverride != that.isGetterUsingOverride) return false;
-            if (supressSufix != that.supressSufix) return false;
-            if (builderAnnotation != null ? !builderAnnotation.equals(that.builderAnnotation) : that.builderAnnotation != null)
-                return false;
-            if (builderAssertionName != null ? !builderAssertionName.equals(that.builderAssertionName) : that.builderAssertionName != null)
-                return false;
-            if (dtoAnnotation != null ? !dtoAnnotation.equals(that.dtoAnnotation) : that.dtoAnnotation != null)
-                return false;
-            if (dtoSuffix != null ? !dtoSuffix.equals(that.dtoSuffix) : that.dtoSuffix != null) return false;
-            if (wrapperAnnotation != null ? !wrapperAnnotation.equals(that.wrapperAnnotation) : that.wrapperAnnotation != null)
-                return false;
-            if (wrapperSuffix != null ? !wrapperSuffix.equals(that.wrapperSuffix) : that.wrapperSuffix != null)
-                return false;
-
-            return true;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = dtoAnnotation != null ? dtoAnnotation.hashCode() : 0;
-            result = 31 * result + (wrapperAnnotation != null ? wrapperAnnotation.hashCode() : 0);
-            result = 31 * result + (builderAnnotation != null ? builderAnnotation.hashCode() : 0);
-            result = 31 * result + (builderAssertionName != null ? builderAssertionName.hashCode() : 0);
-            result = 31 * result + (dtoSuffix != null ? dtoSuffix.hashCode() : 0);
-            result = 31 * result + (wrapperSuffix != null ? wrapperSuffix.hashCode() : 0);
-            result = 31 * result + (supressSufix ? 1 : 0);
-            result = 31 * result + (isGetterUsingOverride ? 1 : 0);
-            return result;
-        }
-    }
-
 }
 
