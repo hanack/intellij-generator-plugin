@@ -1,4 +1,6 @@
 Version 0.3
-- 
+- Configurable initialization of dto attributes added.
+  First part of feature request 13 http://github.com/hanack/intellij-generator-plugin/issues#issue/13.
+- Configuration panel uses now GridBagLayout
 Version 0.2
 Version 0.1
