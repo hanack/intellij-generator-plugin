@@ -4,44 +4,7 @@
     <editor_bookmark url="file://$PROJECT_DIR$/src/test/de/jigp/plugin/configuration/TypeToTextMappingTest.java" line="27" number="7" description="String initializer = &quot;new java.util.Collection.$&lt;&gt;..." />
   </component>
   <component name="ChangeListManager">
-    <list name="Failed commit: Default" comment="Documentation for new configuration panel and dto attribute initializer added.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/personInterfaceWithAnnotation.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/personDtoWithoutInitializer.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/screenshots/pluginConfiguration.png" afterPath="$PROJECT_DIR$/documentation/screenshots/pluginConfiguration.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/listInitializerMapping.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/personDtoInitializer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/enableInitializer.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/screenshots/personInterface.png" afterPath="$PROJECT_DIR$/documentation/screenshots/personInterface.png" />
-    </list>
-    <list default="true" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/personDtoWithoutInitializer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/listInitializerMapping.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-5.tiff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-3.tiff" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-3.tiff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/addRemoveMethods.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/personDtoInitializer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.007.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-4.tiff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/pluginConfiguration-1.tiff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.006.jpg" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.006.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intellij-generator-plugin.iws" afterPath="$PROJECT_DIR$/intellij-generator-plugin.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/configurationAddRemove.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-6.tiff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-7.tiff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/intellij-generator-plugin.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/personInterfaceWithAnnotation.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.key/index.apxl.gz" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/index.apxl.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/enableInitializer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/configurationAddRemove.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/addRemoveMethods.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.005.jpg" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.005.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java" />
-    </list>
+    <list default="true" name="Default" comment="" />
     <ignored path="intellij-generator-plugin.iws" />
     <ignored path=".idea/workspace.xml" />
   </component>
@@ -133,98 +96,7 @@
     <subPane subId="intellij-generator-plugin" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="PluginConfigurationPanel.java" pinned="true" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DtoGenerator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="56" selection-start="4235" selection-end="4235" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractGenerator.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="107" selection-start="10271" selection-end="10271" vertical-scroll-proportion="1.1887478">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TypeToTextMapping.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="32" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TypeToTextPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="41" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeneratorPluginContext.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginContext.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="60" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="13" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeneratorPluginComponent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="0" selection-start="2652" selection-end="2652" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PsiFieldFilterDialog.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/PsiFieldFilterDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="13" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TypeToTextFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="16" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -1152,6 +1024,7 @@
     <MESSAGE value="Initial implementation of Dto variable initializers" />
     <MESSAGE value="- Configuration for initializer expressions implemented&#10;- Layout of plugin configuration refactored" />
     <MESSAGE value="refactorings&#10;" />
+    <MESSAGE value="- add and remove method for dto generation added.&#10;- Documentation updated&#10;" />
     <MESSAGE value="Documentation for new configuration panel and dto attribute initializer added." />
   </component>
   <component name="XDebuggerManager">
@@ -1162,29 +1035,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/wrapper/WrapperTargetClassChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/wrapper/WrapperGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/BuilderConfigurationPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/documentation/screenshots/listInitializerMapping.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1273,9 +1123,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="107" selection-start="10271" selection-end="10271" vertical-scroll-proportion="1.1887478">
+        <state line="277" column="107" selection-start="10271" selection-end="10271" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/screenshots/enableInitializer.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/screenshots/personInterfaceWithAnnotation.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
