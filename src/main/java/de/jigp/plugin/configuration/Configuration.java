@@ -1,13 +1,15 @@
 package de.jigp.plugin.configuration;
 
-public class Configuration {
+import java.io.Serializable;
+
+public class Configuration implements Serializable {
     public String dtoAnnotation;
     public String wrapperAnnotation;
     public String builderAnnotation;
-    public String builderAssertionName;
+    public String builderAssertionExpression;
     public String dtoSuffix;
     public String wrapperSuffix;
-    public boolean supressSufix;
+    public boolean isSuffixQuestionSupressed;
     public boolean isGetterUsingOverride = true;
 
     public TypeToTextMapping variableInitializers;
@@ -19,7 +21,7 @@ public class Configuration {
     public void reinitNullValues() {
         dtoAnnotation = isEmpty(dtoAnnotation) ? "DtoAnnotationType" : dtoAnnotation;
         builderAnnotation = isEmpty(builderAnnotation) ? "BuilderAnnotationType" : builderAnnotation;
-        builderAssertionName = isEmpty(builderAssertionName) ? "org.springframework.util.Assert.notNull" : builderAssertionName;
+        builderAssertionExpression = isEmpty(builderAssertionExpression) ? "org.springframework.util.Assert.notNull" : builderAssertionExpression;
         dtoSuffix = isEmpty(dtoSuffix) ? "Dto" : dtoSuffix;
         wrapperSuffix = isEmpty(wrapperSuffix) ? "Wrapper" : wrapperSuffix;
         isGetterUsingOverride = true;
@@ -43,14 +45,16 @@ public class Configuration {
         Configuration that = (Configuration) o;
 
         if (isGetterUsingOverride != that.isGetterUsingOverride) return false;
-        if (supressSufix != that.supressSufix) return false;
+        if (isSuffixQuestionSupressed != that.isSuffixQuestionSupressed) return false;
         if (builderAnnotation != null ? !builderAnnotation.equals(that.builderAnnotation) : that.builderAnnotation != null)
             return false;
-        if (builderAssertionName != null ? !builderAssertionName.equals(that.builderAssertionName) : that.builderAssertionName != null)
+        if (builderAssertionExpression != null ? !builderAssertionExpression.equals(that.builderAssertionExpression) : that.builderAssertionExpression != null)
             return false;
         if (dtoAnnotation != null ? !dtoAnnotation.equals(that.dtoAnnotation) : that.dtoAnnotation != null)
             return false;
         if (dtoSuffix != null ? !dtoSuffix.equals(that.dtoSuffix) : that.dtoSuffix != null) return false;
+        if (variableInitializers != null ? !variableInitializers.equals(that.variableInitializers) : that.variableInitializers != null)
+            return false;
         if (wrapperAnnotation != null ? !wrapperAnnotation.equals(that.wrapperAnnotation) : that.wrapperAnnotation != null)
             return false;
         if (wrapperSuffix != null ? !wrapperSuffix.equals(that.wrapperSuffix) : that.wrapperSuffix != null)
@@ -64,11 +68,12 @@ public class Configuration {
         int result = dtoAnnotation != null ? dtoAnnotation.hashCode() : 0;
         result = 31 * result + (wrapperAnnotation != null ? wrapperAnnotation.hashCode() : 0);
         result = 31 * result + (builderAnnotation != null ? builderAnnotation.hashCode() : 0);
-        result = 31 * result + (builderAssertionName != null ? builderAssertionName.hashCode() : 0);
+        result = 31 * result + (builderAssertionExpression != null ? builderAssertionExpression.hashCode() : 0);
         result = 31 * result + (dtoSuffix != null ? dtoSuffix.hashCode() : 0);
         result = 31 * result + (wrapperSuffix != null ? wrapperSuffix.hashCode() : 0);
-        result = 31 * result + (supressSufix ? 1 : 0);
+        result = 31 * result + (isSuffixQuestionSupressed ? 1 : 0);
         result = 31 * result + (isGetterUsingOverride ? 1 : 0);
+        result = 31 * result + (variableInitializers != null ? variableInitializers.hashCode() : 0);
         return result;
     }
 }

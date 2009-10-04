@@ -50,7 +50,7 @@ public class BuilderGenerator extends AbstractGenerator {
         this.addOrReplaceMethod(setMethodText);
 
         if (isAssertionForFieldEnabled(psiField)) {
-            String assertionText = GeneratorPluginContext.getConfiguration().builderAssertionName + "(instance." + psiField.getName() + ", \"Attribute: " + psiField.getName() + "\");";
+            String assertionText = GeneratorPluginContext.getConfiguration().builderAssertionExpression + "(instance." + psiField.getName() + ", \"Attribute: " + psiField.getName() + "\");";
             attributeAssertionTexts.add(assertionText);
         }
 

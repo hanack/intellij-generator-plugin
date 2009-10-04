@@ -82,16 +82,17 @@ public class DtoGenerator extends AbstractGenerator {
     private void createField() {
         PsiField field = psiElementFactory.createFieldFromText("private " + fieldTypeName + " "
                 + fieldName + ";", null);
+        setInitializer(field);
+        this.addField(field);
+    }
 
-        //TODO convert "" to null and handle exception
+    private void setInitializer(PsiField field) {
         String initializerText = configuration.variableInitializers.getText(field.getType());
-
         PsiExpression initializer = null;
         if (initializerText != null) {
             initializer = psiElementFactory.createExpressionFromText(initializerText, null);
         }
         field.setInitializer(initializer);
-        this.addField(field);
     }
 
     private void createSetter() {

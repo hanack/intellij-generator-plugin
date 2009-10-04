@@ -1,21 +1,16 @@
 package de.jigp.plugin.configuration;
 
-import com.intellij.uiDesigner.core.GridConstraints;
-import com.intellij.uiDesigner.core.GridLayoutManager;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class PluginConfigurationPanel extends JComponent {
     private JPanel jPanel;
-    private JTextField dtoAnnotationName;
-    private JTextField wrapperAnnotationName;
-    private JTextField builderAnnotationName;
-    private JTextField builderAssertionName;
-    private JTextField dtoSuffix;
-    private JTextField wrapperSuffix;
-    private Checkbox supressSuffix;
-    private Checkbox isGetterUsingOverride;
+    private DtoConfigurationPanel dtoConfigurationPanel;
+    private WrapperConfigurationPanel wrapperConfigurationPanel;
+    private BuilderConfigurationPanel builderConfigurationPanel;
+    private GeneralConfigurationPanel generalConfigurationPanel;
+    private GridBagConstraints constraints;
+
 
     public PluginConfigurationPanel() {
         initComponents();
@@ -23,115 +18,79 @@ public class PluginConfigurationPanel extends JComponent {
 
     public Configuration getConfiguration() {
         Configuration configuration = new Configuration();
-        configuration.builderAnnotation = builderAnnotationName.getText();
-        configuration.dtoAnnotation = dtoAnnotationName.getText();
-        configuration.dtoSuffix = dtoSuffix.getText();
-        configuration.wrapperAnnotation = wrapperAnnotationName.getText();
-        configuration.wrapperSuffix = wrapperSuffix.getText();
-        configuration.builderAssertionName = builderAssertionName.getText();
-        configuration.supressSufix = supressSuffix.getState();
-        configuration.isGetterUsingOverride = isGetterUsingOverride.getState();
+        dtoConfigurationPanel.fillConfiguration(configuration);
+        wrapperConfigurationPanel.fillConfiguration(configuration);
+        builderConfigurationPanel.fillConfiguration(configuration);
+        generalConfigurationPanel.fillConfiguration(configuration);
 
         return configuration;
     }
 
 
     public void setConfiguration(Configuration configuration) {
-        builderAnnotationName.setText(configuration.builderAnnotation);
-        builderAssertionName.setText(configuration.builderAssertionName);
-        wrapperAnnotationName.setText(configuration.wrapperAnnotation);
-        wrapperSuffix.setText(configuration.wrapperSuffix);
-        dtoAnnotationName.setText(configuration.dtoAnnotation);
-        dtoSuffix.setText(configuration.dtoSuffix);
-        supressSuffix.setState(configuration.supressSufix);
-        isGetterUsingOverride.setState(configuration.isGetterUsingOverride);
-
+        dtoConfigurationPanel.setConfiguration(configuration);
+        wrapperConfigurationPanel.setConfiguration(configuration);
+        builderConfigurationPanel.setConfiguration(configuration);
+        generalConfigurationPanel.setConfiguration(configuration);
     }
+
 
     public JPanel getJPanel() {
         return jPanel;
     }
 
     private void initComponents() {
-        int amountRows = 8;
-        int amountColumns = 2;
-        initializePanel(amountRows, amountColumns);
+        initializePanel();
 
         int row = 0;
-        addLabelInFirstColumn(row, "Full qualified annotation to identify base for DTO classes: ");
-        dtoAnnotationName = createTextFieldInSecondColumn(row);
+        generalConfigurationPanel = new GeneralConfigurationPanel();
+        add(row, generalConfigurationPanel);
 
         row++;
-        addLabelInFirstColumn(row, "Suffix for DTO generation:");
-        dtoSuffix = createTextFieldInSecondColumn(row);
+        dtoConfigurationPanel = new DtoConfigurationPanel();
+        add(row, dtoConfigurationPanel);
 
         row++;
-        addLabelInFirstColumn(row, "Full qualified annotation to identify base for Wrapper classes:");
-        wrapperAnnotationName = createTextFieldInSecondColumn(row);
+        wrapperConfigurationPanel = new WrapperConfigurationPanel();
+        add(row, wrapperConfigurationPanel);
 
         row++;
-        addLabelInFirstColumn(row, "Suffix for Wrapper generation:");
-        wrapperSuffix = createTextFieldInSecondColumn(row);
-
-
-        row++;
-        addLabelInFirstColumn(row, "Full qualified annotation to identify base for Builder classes:");
-        builderAnnotationName = createTextFieldInSecondColumn(row);
+        builderConfigurationPanel = new BuilderConfigurationPanel();
+        add(row, builderConfigurationPanel);
 
         row++;
-        addLabelInFirstColumn(row, "Builder: full qualified name of static assertion method:");
-        builderAssertionName = createTextFieldInSecondColumn(row);
+        addLast(row);
 
-        row++;
-        addLabelInSecondColumn(row, "Supress suffix dialog");
-        supressSuffix = new Checkbox();
-        addElementInFirstColumn(row, supressSuffix);
-
-        row++;
-        addLabelInSecondColumn(row, "Should getter use @Override annotation");
-        isGetterUsingOverride = new Checkbox();
-        addElementInFirstColumn(row, isGetterUsingOverride);
     }
 
-    private void initializePanel(int amountRows, int amountColumns) {
-        //TODO beautify current ugly layout
+    private void add(int row, Component component) {
+        constraints.gridx = 0;
+        constraints.gridy = row;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.weighty = 0.0;
+        constraints.weightx = 1.0;
+        constraints.anchor = GridBagConstraints.LINE_START;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        jPanel.add(component, constraints);
+    }
+
+    private void addLast(int row) {
+        constraints.gridx = 0;
+        constraints.gridy = row;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.weighty = 1.0;
+        constraints.weightx = 1.0;
+        constraints.anchor = GridBagConstraints.LINE_START;
+        constraints.fill = GridBagConstraints.BOTH;
+        jPanel.add(new Panel(), constraints);
+    }
+
+    private void initializePanel() {
         jPanel = new JPanel();
-        jPanel.setLayout(new GridLayoutManager(amountRows, amountColumns, new Insets(0, 0, 0, 0), -1, -1));
+        jPanel.setLayout(new GridBagLayout());
+        constraints = new GridBagConstraints();
     }
-
-    private void addLabelInSecondColumn(int labelRow, String labelText) {
-        JLabel label = new JLabel();
-        label.setText(labelText);
-        jPanel.add(label, new GridConstraints(labelRow, 1, 1, 1,
-                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                GridConstraints.SIZEPOLICY_FIXED,
-                GridConstraints.SIZEPOLICY_FIXED,
-                null, null, null));
-    }
-
-    private void addLabelInFirstColumn(int labelRow, String labelText) {
-        JLabel label = new JLabel();
-        label.setText(labelText);
-        addElementInFirstColumn(labelRow, label);
-    }
-
-    private void addElementInFirstColumn(int labelRow, Component component) {
-        jPanel.add(component, new GridConstraints(labelRow, 0, 1, 1,
-                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                GridConstraints.SIZEPOLICY_FIXED,
-                GridConstraints.SIZEPOLICY_FIXED,
-                null, null, null));
-    }
-
-    private JTextField createTextFieldInSecondColumn(int row) {
-        JTextField textField = new JTextField();
-        jPanel.add(textField, new GridConstraints(row, 1, 1, 1,
-                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-                GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                GridConstraints.SIZEPOLICY_FIXED,
-                null, null, null));
-        return textField;
-    }
-
 
 }
