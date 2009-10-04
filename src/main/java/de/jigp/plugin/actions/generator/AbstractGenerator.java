@@ -270,6 +270,14 @@ public abstract class AbstractGenerator extends PsiInfrastructureHolder {
         String setterName = determineGetterMethodNameFromGetterMethod(psiMethod).replaceFirst("g", "s");
         return setterName;
     }
+    protected String determineAddMethodNameFromGetterMethod(PsiMethod psiMethod) {
+        String addName = determineGetterMethodNameFromGetterMethod(psiMethod).replaceFirst("get", "add")+"Element";
+        return addName;
+    }
+    protected String determineRemoveMethodNameFromGetterMethod(PsiMethod psiMethod) {
+        String removeName = determineAddMethodNameFromGetterMethod(psiMethod).replaceFirst("add", "remove");
+        return removeName;
+    }
 
     protected String determineFieldTypeNameFromGetterMethod(PsiMethod psiMethod) {
         return psiMethod.getReturnType().getCanonicalText();

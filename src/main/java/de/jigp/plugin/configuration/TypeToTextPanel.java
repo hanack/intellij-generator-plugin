@@ -69,31 +69,30 @@ public class TypeToTextPanel extends JPanel implements ActionListener, ItemListe
             mapping = GeneratorPluginContext.getConfiguration().variableInitializers;
         }
 
-        initializerRowData = new Object[mapping.size()][2];
+        initializerRowData = new Object[mapping.size()][3];
         int i = 0;
 //         TODO sort it
         for (Entry entry : mapping.entries()) {
-            initializerRowData[i++] = new Object[]{entry.type, entry.text};
+            initializerRowData[i++] = new Object[]{entry.type, entry.text, (Boolean) entry.isAddRemoveMethodRequested};
         }
     }
 
     protected DefaultTableModel createTableModel() {
-        String[] columNames = {"type (full qualified)", "initializer expression"};
+        String[] columNames = {"type (full qualified)", "initializer expression", "generate add/remove"};
         DefaultTableModel defaultTableModel = new DefaultTableModel(initializerRowData, columNames) {
             public boolean isCellEditable(int row, int col) {
                 return true;
             }
 
             @Override
-            public String toString() {
-                String str = "";
-
-                for (int i = 0; i < this.getRowCount(); i++) {
-                    str += i + " " + this.getValueAt(i, 0) + " : " + getValueAt(i, 1) + "\n";
+            public Class<?> getColumnClass(int i) {
+                if (i == 2) {
+                    return Boolean.class;
                 }
-                return str;
+                return super.getColumnClass(i);
             }
         };
+
 
         return defaultTableModel;
     }
@@ -101,7 +100,10 @@ public class TypeToTextPanel extends JPanel implements ActionListener, ItemListe
     public TypeToTextMapping getMapping() {
         TypeToTextMapping mapping = new TypeToTextMapping();
         for (int i = 0; i < tableModel.getRowCount(); i++) {
-            mapping.put((String) tableModel.getValueAt(i, 0), (String) tableModel.getValueAt(i, 1));
+            mapping.put(
+                    (String) tableModel.getValueAt(i, 0),
+                    (String) tableModel.getValueAt(i, 1),
+                    (Boolean) tableModel.getValueAt(i, 2));
         }
         mapping.setMappingActive(isEnabledState);
         return mapping;
@@ -115,7 +117,7 @@ public class TypeToTextPanel extends JPanel implements ActionListener, ItemListe
     }
 
     private void addNewRow() {
-        tableModel.insertRow(0, new String[]{"new type", "new initializer expression"});
+        tableModel.insertRow(0, new Object[]{"new type", "new initializer expression", Boolean.FALSE});
     }
 
 

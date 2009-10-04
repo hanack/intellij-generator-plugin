@@ -4,21 +4,43 @@
     <editor_bookmark url="file://$PROJECT_DIR$/src/test/de/jigp/plugin/configuration/TypeToTextMappingTest.java" line="27" number="7" description="String initializer = &quot;new java.util.Collection.$&lt;&gt;..." />
   </component>
   <component name="ChangeListManager">
+    <list name="Failed commit: Default" comment="Documentation for new configuration panel and dto attribute initializer added.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/personInterfaceWithAnnotation.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/personDtoWithoutInitializer.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/screenshots/pluginConfiguration.png" afterPath="$PROJECT_DIR$/documentation/screenshots/pluginConfiguration.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/listInitializerMapping.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/personDtoInitializer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/enableInitializer.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/screenshots/personInterface.png" afterPath="$PROJECT_DIR$/documentation/screenshots/personInterface.png" />
+    </list>
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/WrapperConfigurationPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/GeneralConfigurationPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/DtoGeneratorComputable.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/DtoGeneratorComputable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/FindAndHandleClassComputable.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/FindAndHandleClassComputable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/personDtoWithoutInitializer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/listInitializerMapping.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-5.tiff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-3.tiff" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-3.tiff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/BuilderConfigurationPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/generator/BuilderGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/generator/BuilderGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/DtoConfigurationPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/addRemoveMethods.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/personDtoInitializer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.007.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-4.tiff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/pluginConfiguration-1.tiff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.006.jpg" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.006.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intellij-generator-plugin.iws" afterPath="$PROJECT_DIR$/intellij-generator-plugin.iws" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/configurationAddRemove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-6.tiff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/thumbs/st0-7.tiff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/intellij-generator-plugin.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/personInterfaceWithAnnotation.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.key/index.apxl.gz" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/index.apxl.gz" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/enableInitializer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.key/configurationAddRemove.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documentation/screenshots/addRemoveMethods.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documentation/pluginScreenshots.005.jpg" afterPath="$PROJECT_DIR$/documentation/pluginScreenshots.005.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java" />
     </list>
     <ignored path="intellij-generator-plugin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,6 +59,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginComponent.java" line="89" class="de.jigp.plugin.GeneratorPluginComponent" package="de.jigp.plugin">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -100,47 +137,7 @@
       <file leaf-file-name="PluginConfigurationPanel.java" pinned="true" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="33" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TypeToTextPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="53" selection-start="2836" selection-end="2836" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DtoTargetClassChooser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoTargetClassChooser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="51" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DetermineTargetClassChooser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/DetermineTargetClassChooser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="22" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenerateDtosMenuAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/GenerateDtosMenuAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0">
+            <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -149,48 +146,80 @@
       <file leaf-file-name="DtoGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="517" selection-end="517" vertical-scroll-proportion="0.0">
+            <state line="113" column="56" selection-start="4235" selection-end="4235" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenerateDtoEditorAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/GenerateDtoEditorAction.java">
+      <file leaf-file-name="AbstractGenerator.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="13" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0">
+            <state line="277" column="107" selection-start="10271" selection-end="10271" vertical-scroll-proportion="1.1887478">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenerateDtoEditorActionHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/GenerateDtoEditorActionHandler.java">
+      <file leaf-file-name="TypeToTextMapping.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="6" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
+            <state line="102" column="32" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DtoGeneratorComputable.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/DtoGeneratorComputable.java">
+      <file leaf-file-name="TypeToTextPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="61" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.76627713">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="89" column="41" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DtoConfigurationPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/DtoConfigurationPanel.java">
+      <file leaf-file-name="GeneratorPluginContext.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="7" column="60" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="13" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneratorPluginComponent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="0" selection-start="2652" selection-end="2652" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PsiFieldFilterDialog.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/PsiFieldFilterDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="13" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TypeToTextFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="16" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -669,10 +698,6 @@
           <option name="myItemId" value="actions" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="wrapper" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -708,7 +733,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="menu" />
+          <option name="myItemId" value="generator" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -743,120 +768,6 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="actions" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="main" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="actions" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="dto" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="main" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="actions" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="contextmenu" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="intellij-generator-plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="main" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="plugin" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="actions" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="contextmenu" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -1120,9 +1031,9 @@
       </method>
     </configuration>
     <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Plugin.igp" />
-      <item index="1" class="java.lang.String" itemvalue="Plugin.Unnamed" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TypeToTextMappingTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TypeToTextMappingTest" />
+      <item index="1" class="java.lang.String" itemvalue="Plugin.igp" />
+      <item index="2" class="java.lang.String" itemvalue="Plugin.Unnamed" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1179,7 +1090,7 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942328" sideWeight="0.5" order="10" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985783" sideWeight="0.5" order="7" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1956044" sideWeight="0.63147604" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28516483" sideWeight="0.599218" order="0" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24945055" sideWeight="0.66373414" order="1" side_tool="false" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942328" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942328" sideWeight="0.5" order="12" side_tool="false" />
@@ -1191,8 +1102,8 @@
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16324535" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Maven Repo Search" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942328" sideWeight="0.5" order="8" side_tool="false" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21407625" sideWeight="0.5" order="16" side_tool="false" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36168134" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3939394" sideWeight="0.5" order="16" side_tool="false" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36070383" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998045" sideWeight="0.5" order="4" side_tool="false" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942328" sideWeight="0.5" order="13" side_tool="false" />
@@ -1212,7 +1123,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial implementation of Dto variable initializers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentation for new configuration panel and dto attribute initializer added." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -1239,6 +1150,9 @@
     <MESSAGE value="Version 0.2" />
     <MESSAGE value="Documentation enhanced.&#10;Steps to upload plugin documented." />
     <MESSAGE value="Initial implementation of Dto variable initializers" />
+    <MESSAGE value="- Configuration for initializer expressions implemented&#10;- Layout of plugin configuration refactored" />
+    <MESSAGE value="refactorings&#10;" />
+    <MESSAGE value="Documentation for new configuration panel and dto attribute initializer added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1248,66 +1162,21 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/wrapper/WrapperTargetClassChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="50" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0">
+        <state line="6" column="13" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/PsiFieldFilterDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/wrapper/WrapperGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="239" column="89" selection-start="7900" selection-end="7946" vertical-scroll-proportion="0.0">
+        <state line="12" column="13" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/BuilderConfigurationPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="50" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/WrapperConfigurationPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="26" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="44" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/GeneralConfigurationPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="33" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/DtoConfigurationPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
           <folding>
@@ -1316,25 +1185,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="53" selection-start="2836" selection-end="2836" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/documentation/screenshots/listInitializerMapping.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/GenerateDtoEditorAction.java">
+    <entry file="file://$PROJECT_DIR$/changelog.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/GenerateDtoEditorActionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1346,33 +1204,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoTargetClassChooser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/PluginConfigurationPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="51" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+        <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="41" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="60" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/menu/DetermineTargetClassChooser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="22" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
+        <state line="4" column="13" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/builder/PsiFieldFilterDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="13" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="16" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/GeneratorPluginComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="0" selection-start="2652" selection-end="2652" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/configuration/TypeToTextMapping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="32" selection-start="3144" selection-end="3144" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/dto/DtoGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="517" selection-end="517" vertical-scroll-proportion="0.0">
+        <state line="113" column="56" selection-start="4235" selection-end="4235" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/contextmenu/dto/DtoGeneratorComputable.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/jigp/plugin/actions/generator/AbstractGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="61" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.76627713">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="277" column="107" selection-start="10271" selection-end="10271" vertical-scroll-proportion="1.1887478">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -70,9 +70,11 @@ public class DtoGenerator extends AbstractGenerator {
         createField();
         createGetter();
         createSetter();
+        createAddRemove();
         addConstructorTextForType();
         addReturnTypeToImportList(psiMethod);
     }
+
 
     private void addReturnTypeToImportList(PsiMethod psiMethod) {
         PsiClass importClass = psiFacade.findClass(psiMethod.getReturnType().getCanonicalText(), globalSearchScope);
@@ -101,6 +103,21 @@ public class DtoGenerator extends AbstractGenerator {
                 "this." + fieldName + "=" + fieldName + ";}";
         addOrReplaceMethod(setMethodText);
     }
+
+    private void createAddRemove() {
+        if (configuration.variableInitializers.isAddRemoveRequested(fieldType)) {
+            String elementType = configuration.variableInitializers.getElementType(fieldType);
+            String addMethodName = determineAddMethodNameFromGetterMethod(psiMethod);
+            String addMethod = "public "+ targetClassName() + " " + addMethodName + "(" + elementType + " element) {" +
+                    "this." + fieldName + ".add(element); return this;}";
+            addOrReplaceMethod(addMethod);
+            String removeMethodName = determineRemoveMethodNameFromGetterMethod(psiMethod);
+            String removeMethod = "public "+ targetClassName() + " " + removeMethodName + "(" + elementType + " element) {" +
+                    "this." + fieldName + ".remove(element); return this;}";
+            addOrReplaceMethod(removeMethod);
+        }
+    }
+
 
     private void createGetter() {
         String getterMethodName = determineGetterMethodNameFromGetterMethod(psiMethod);

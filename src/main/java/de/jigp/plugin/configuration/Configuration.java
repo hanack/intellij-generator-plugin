@@ -15,7 +15,7 @@ public class Configuration implements Serializable {
     public TypeToTextMapping variableInitializers;
 
     public Configuration() {
-//        reinitNullValues();
+        reinitNullValues();
     }
 
     public void reinitNullValues() {
