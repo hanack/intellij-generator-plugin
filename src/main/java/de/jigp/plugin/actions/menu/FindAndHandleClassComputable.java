@@ -8,6 +8,7 @@ import com.intellij.psi.PsiMember;
 import com.intellij.psi.search.searches.AnnotatedMembersSearch;
 import com.intellij.util.Query;
 import de.jigp.plugin.GeneratorPluginContext;
+import de.jigp.plugin.actions.generator.CancelActionException;
 
 import java.util.Collection;
 
@@ -39,7 +40,11 @@ public class FindAndHandleClassComputable extends PsiInfrastructureHolder implem
             String targetClassSuffix = targetClassChooser.getDefaultTargetClassSuffix();
             if (!GeneratorPluginContext.getConfiguration().isSuffixQuestionSupressed) {
                 String text = "Generate elements for " + classNames.size() + " sources annotated with: " + annotationName + "\n";
-                targetClassSuffix = targetClassChooser.invoke(text);
+                try {
+                    targetClassSuffix = targetClassChooser.invoke(text);
+                } catch (CancelActionException e) {
+                    return;
+                }
             }
             for (PsiMember member : classNames) {
                 PsiClass psiClass = (PsiClass) member.getOriginalElement();

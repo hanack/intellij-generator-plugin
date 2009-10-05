@@ -6,6 +6,7 @@ import com.intellij.psi.PsiClass;
 import de.jigp.plugin.GeneratorPluginContext;
 import de.jigp.plugin.actions.dto.DtoGenerator;
 import de.jigp.plugin.actions.dto.DtoTargetClassChooser;
+import de.jigp.plugin.actions.generator.CancelActionException;
 import de.jigp.plugin.actions.menu.DetermineTargetClassChooser;
 import de.jigp.plugin.actions.menu.PsiInfrastructureHolder;
 import de.jigp.plugin.configuration.Configuration;
@@ -25,7 +26,11 @@ class DtoGeneratorComputable extends PsiInfrastructureHolder implements Computab
             targetClassSuffix = configuration.dtoSuffix;
         } else {
             DetermineTargetClassChooser chooser = new DtoTargetClassChooser(dataContext);
-            targetClassSuffix = chooser.invoke("Dto suffix");
+            try {
+                targetClassSuffix = chooser.invoke("Dto suffix");
+            } catch (CancelActionException e) {
+                return null;
+            }
         }
         if (targetClassSuffix != null) {
             return new DtoGenerator(dataContext, selectedInterface, targetClassSuffix).build();

@@ -3,6 +3,7 @@ package de.jigp.plugin.actions.menu;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
+import de.jigp.plugin.actions.generator.CancelActionException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ public abstract class DetermineTargetClassChooser extends PsiInfrastructureHolde
         this.defaultSuffixes = Arrays.asList(defaultSuffixes);
     }
 
-    public String invoke(String headlineText) {
+    public String invoke(String headlineText) throws CancelActionException {
         InputValidator validator = new InputValidator() {
 
             public boolean checkInput(String suffix) {
@@ -36,6 +37,9 @@ public abstract class DetermineTargetClassChooser extends PsiInfrastructureHolde
                 suffixes,
                 defaultSuffixes.get(0),
                 validator);
+        if (targetClassSuffix == null){
+            throw new CancelActionException();
+        }
         return targetClassSuffix;
     }
 

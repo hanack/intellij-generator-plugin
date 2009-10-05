@@ -35,6 +35,7 @@ public class TypeToTextPanel extends JPanel implements ActionListener, ItemListe
 
         tableModel = createTableModel();
         tableVariableInitializers = new JTable(tableModel);
+        setTableColumnWidths();
 
         JScrollPane tablePane = new JScrollPane(tableVariableInitializers);
         JPanel buttonPanel = new JPanel();
@@ -95,6 +96,12 @@ public class TypeToTextPanel extends JPanel implements ActionListener, ItemListe
 
 
         return defaultTableModel;
+    }
+
+    private void setTableColumnWidths() {
+        tableVariableInitializers.getColumnModel().getColumn(0).setPreferredWidth(900);
+        tableVariableInitializers.getColumnModel().getColumn(1).setPreferredWidth(900);
+        tableVariableInitializers.getColumnModel().getColumn(2).setPreferredWidth(100);
     }
 
     public TypeToTextMapping getMapping() {
