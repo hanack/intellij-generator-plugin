@@ -21,46 +21,63 @@ public class TypeToTextPanel extends JPanel implements ActionListener, ItemListe
     private JCheckBox isEnabled;
     private boolean isEnabledState = true;
     private GridBagConstraints constraints;
+    private JPanel buttonPanel;
+    private JScrollPane tablePane;
 
     public TypeToTextPanel(TypeToTextMapping mapping, String activationText) {
-        setLayout(new GridBagLayout());
-        createInitializerTableRowData(mapping);
-        constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.LINE_START;
+        initLayout();
+        createEnableCheckbox(mapping, activationText);
+        createTablePanel(mapping);
+        createButtonPanel();
 
-        isEnabled = new JCheckBox(activationText);
-        isEnabled.setEnabled(mapping != null ? mapping.isMappingActive : isEnabledState);
-        isEnabled.addItemListener(this);
+        setXY(0, 0);
+        this.add(isEnabled, constraints);
 
+        setXY(0, 1);
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        this.add(tablePane, constraints);
 
-        tableModel = createTableModel();
-        tableVariableInitializers = new JTable(tableModel);
-        setTableColumnWidths();
+        setXY(0, 2);
+        this.add(buttonPanel, constraints);
+        this.updateUI();
+    }
 
-        JScrollPane tablePane = new JScrollPane(tableVariableInitializers);
-        JPanel buttonPanel = new JPanel();
+    private void setXY(int x, int y) {
+        constraints.gridx = x;
+        constraints.gridy = y;
+    }
+
+    private void createButtonPanel() {
+        buttonPanel = new JPanel();
         addButton = new JButton("new");
         addButton.addActionListener(this);
         removeButton = new JButton("remove selected");
         removeButton.addActionListener(this);
-        buttonPanel.add(addButton);
+        this.buttonPanel.add(addButton);
         buttonPanel.add(removeButton);
+    }
 
+    private void initLayout() {
+        setLayout(new GridBagLayout());
+        constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.LINE_START;
         constraints.weightx = 1.0;
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        this.add(isEnabled, constraints);
+    }
 
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.anchor = GridBagConstraints.CENTER;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        this.add(tablePane, constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        this.add(buttonPanel, constraints);
+    private void createEnableCheckbox(TypeToTextMapping mapping, String activationText) {
+        isEnabled = new JCheckBox(activationText);
+        isEnabled.setEnabled(mapping != null ? mapping.isMappingActive : isEnabledState);
+        isEnabled.addItemListener(this);
+    }
 
-        this.updateUI();
+    private void createTablePanel(TypeToTextMapping mapping) {
+        createInitializerTableRowData(mapping);
+        tableModel = createTableModel();
+        tableVariableInitializers = new JTable(tableModel);
+        setTableColumnWidths();
+
+        tablePane = new JScrollPane(tableVariableInitializers);
     }
 
 
