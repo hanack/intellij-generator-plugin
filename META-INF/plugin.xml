@@ -13,7 +13,7 @@
     </description>
     <vendor url="http://wiki.github.com/hanack/intellij-generator-plugin"
             email="jens.hanack@gmx.de">Jens Hanack</vendor>
-    <version>0.2</version>
+    <version>0.3</version>
     <idea-version since-build="8000"/>
     <actions>
         <action id="AllDtos" class="de.jigp.plugin.actions.dto.GenerateDtosMenuAction"
